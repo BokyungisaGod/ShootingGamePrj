@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b32753d5bedd7ee46940d2b415a1d3a9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - buttonScale: {instanceID: 0}
+  - mainGroup: {instanceID: 0}
+  - stageGroup: {instanceID: 0}
+  - clip: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
