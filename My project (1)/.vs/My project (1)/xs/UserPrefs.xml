@@ -1,0 +1,35 @@
+﻿<Properties StartupConfiguration="{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/bokyung/Desktop/ShootingGamePrj-main/My project (1)/Assets/Resources/Stage 1.txt" relfile="Assets/Resources/Stage 1.txt" line="3" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0b38a591-2c26-4ce6-8a9f-0c5275096c36" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/VolumeSettings.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Item.cs" Line="11" Column="45" />
+      <File FileName="Assets/Scripts/Enemy.cs" Line="39" Column="38" />
+      <File FileName="Assets/Scripts/ObjectManager.cs" Line="183" Column="10" />
+      <File FileName="Assets/Resources/Stage 1.txt" Line="8" Column="1" />
+      <File FileName="Assets/VolumeSettings.cs" Line="33" Column="30" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="39" Column="37" />
+      <File FileName="Assets/Scripts/Player.cs" Line="370" Column="39" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="My project (1)" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Resources" expanded="True" />
+              <Node name="Scripts" expanded="True" />
+              <Node name="VolumeSettings.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+</Properties>

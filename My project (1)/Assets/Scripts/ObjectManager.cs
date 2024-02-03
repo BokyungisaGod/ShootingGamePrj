@@ -16,6 +16,12 @@ public class ObjectManager : MonoBehaviour
     public GameObject itemCoinPrefab;
     public GameObject itemPowerPrefab;
     public GameObject itemBoomPrefab;
+    public GameObject plus1Prefab;
+    public GameObject plus2Prefab;
+    public GameObject plus3Prefab;
+    public GameObject minus1Prefab;
+    public GameObject minus2Prefab;
+    public GameObject minus3Prefab;
 
     public GameObject bulletPlayerAPrefab;
     public GameObject bulletPlayerBPrefab;
@@ -38,6 +44,12 @@ public class ObjectManager : MonoBehaviour
     GameObject[] itemCoin;
     GameObject[] itemPower;
     GameObject[] itemBoom;
+    GameObject[] plus1;
+    GameObject[] plus2;
+    GameObject[] plus3;
+    GameObject[] minus1;
+    GameObject[] minus2;
+    GameObject[] minus3;
 
     GameObject[] bulletPlayerA;
     GameObject[] bulletPlayerB;
@@ -64,6 +76,12 @@ public class ObjectManager : MonoBehaviour
         itemCoin = new GameObject[20];
         itemPower = new GameObject[10];
         itemBoom = new GameObject[10];
+        plus1 = new GameObject[10];
+        plus2 = new GameObject[10];
+        plus3 = new GameObject[10];
+        minus1 = new GameObject[10];
+        minus2 = new GameObject[10];
+        minus3 = new GameObject[10];
 
         bulletPlayerA = new GameObject[100];
         bulletPlayerB = new GameObject[100];
@@ -122,7 +140,38 @@ public class ObjectManager : MonoBehaviour
             itemPower[index] = Instantiate(itemPowerPrefab);
             itemPower[index].SetActive(false);
         }
-        
+        for (int index = 0; index < plus1.Length; index++)
+        {
+            plus1[index] = Instantiate(plus1Prefab);
+            plus1[index].SetActive(false);
+        }
+        for (int index = 0; index < plus2.Length; index++)
+        {
+            plus2[index] = Instantiate(plus2Prefab);
+            plus2[index].SetActive(false);
+        }
+        for (int index = 0; index < plus3.Length; index++)
+        {
+            plus3[index] = Instantiate(plus3Prefab);
+            plus3[index].SetActive(false);
+        }
+
+        for (int index = 0; index < minus1.Length; index++)
+        {
+            minus1[index] = Instantiate(minus1Prefab);
+            minus1[index].SetActive(false);
+        }
+        for (int index = 0; index < minus2.Length; index++)
+        {
+            minus2[index] = Instantiate(minus2Prefab);
+            minus2[index].SetActive(false);
+        }
+        for (int index = 0; index < minus3.Length; index++)
+        {
+            minus3[index] = Instantiate(minus3Prefab);
+            minus3[index].SetActive(false);
+        }
+
         for (int index = 0; index < enemyS.Length; index++)
         {
             itemBoom[index] = Instantiate(itemBoomPrefab);
@@ -211,6 +260,24 @@ public class ObjectManager : MonoBehaviour
             case "itemBoom":
                 targetPool = itemBoom;
                 break;
+            case "Plus1":
+                targetPool = plus1;
+                break;
+            case "Plus2":
+                targetPool = plus2;
+                break;
+            case "Plus3":
+                targetPool = plus3;
+                break;
+            case "Minus1":
+                targetPool = minus1;
+                break;
+            case "Minus2":
+                targetPool = minus2;
+                break;
+            case "Minus3":
+                targetPool = minus3;
+                break;
             case "bulletPlayerA":
                 targetPool = bulletPlayerA;
                 break;
@@ -278,6 +345,24 @@ public class ObjectManager : MonoBehaviour
                 break;
             case "itemBoom":
                 targetPool = itemBoom;
+                break;
+            case "Plus1":
+                targetPool = plus1;
+                break;
+            case "Plus2":
+                targetPool = plus2;
+                break;
+            case "Plus3":
+                targetPool = plus3;
+                break;
+            case "Minus1":
+                targetPool = minus1;
+                break;
+            case "Minus2":
+                targetPool = minus2;
+                break;
+            case "Minus3":
+                targetPool = minus3;
                 break;
             case "bulletPlayerA":
                 targetPool = bulletPlayerA;

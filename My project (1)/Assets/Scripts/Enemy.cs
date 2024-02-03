@@ -30,8 +30,12 @@ public class Enemy : MonoBehaviour
     public int patternIndex;
     public int curPatternCount;
     public int[] maxPatternCount;
+
+    //public string[] itemName;
+
     void Awake()
     {
+        //itemName = new string[] { "Plus", "Minus" };
         spriteRenderer = GetComponent<SpriteRenderer>();
         if(enemyName=="B")
             anim=GetComponent<Animator>();
@@ -241,7 +245,7 @@ public class Enemy : MonoBehaviour
         if (health < 0|| cnt == 0&&(enemyName=="V"|| enemyName == "H"))
             return;
         
-        Debug.Log("Èý");
+        Debug.Log("ï¿½ï¿½");
         if (enemyName == "V"|| enemyName == "H") 
         {
             cnt--;
@@ -268,21 +272,29 @@ public class Enemy : MonoBehaviour
             playerLogic.score += enemyScore;
 
             int ran = enemyName == "B"|| enemyName == "V" ? 0 : Random.Range(0, 10);
-            if (ran < 3) 
+            if (ran < 3)
             {
                 Debug.Log("not item");
             }
-            else if (ran < 6) 
+            if (ran < 10)
+            {
+                int ranNum = Random.Range(1, 4);
+                int ranName = Random.Range(0, 2);
+                GameObject oper = ranName == 0 ? objectManager.MakeObj("Plus" + ranNum) : objectManager.MakeObj("Minus" + ranNum);
+                //GameObject Plus = objectManager.MakeObj("Plus" + ranNum);
+                oper.transform.position = transform.position;
+            }
+            else if (ran < 6)
             {
                 GameObject itemCoin = objectManager.MakeObj("itemCoin");
                 itemCoin.transform.position = transform.position;
             }
-            else if(ran<8)
+            else if (ran < 8)
             {
                 GameObject itemPower = objectManager.MakeObj("itemPower");
                 itemPower.transform.position = transform.position;
             }
-            else if(ran<10)
+            else if (ran < 10)
             {
                 GameObject itemBoom = objectManager.MakeObj("itemBoom");
                 itemBoom.transform.position = transform.position;

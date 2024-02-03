@@ -5655,6 +5655,12 @@ MonoBehaviour:
   itemCoinPrefab: {fileID: 8883663402771222806, guid: 133bf0a6b5e3b3241bbf33dee0571afe, type: 3}
   itemPowerPrefab: {fileID: 5294495799614657578, guid: a7993503e37cc0f4491abe33f0b09ac2, type: 3}
   itemBoomPrefab: {fileID: 5070206009375422894, guid: d0987306e844f9145b04d6cfad1a4af9, type: 3}
+  plus1Prefab: {fileID: 8883663402771222806, guid: 24605a0dac3e247a5985bfd3576207ea, type: 3}
+  plus2Prefab: {fileID: 8883663402771222806, guid: e5dee96b773214d3990cbae7d0b0e2bc, type: 3}
+  plus3Prefab: {fileID: 8883663402771222806, guid: e1e838bea33134f01800952c80b4032a, type: 3}
+  minus1Prefab: {fileID: 8883663402771222806, guid: bad7a1fd979b34e3f8c098744a40d607, type: 3}
+  minus2Prefab: {fileID: 8883663402771222806, guid: c2a7a09b13ba34e329dc86604156eef3, type: 3}
+  minus3Prefab: {fileID: 8883663402771222806, guid: 206c9fcb12619430ebfaff31ae5eec08, type: 3}
   bulletPlayerAPrefab: {fileID: 5140515611614148016, guid: 74a12495260a4f445b9d24328f1bb3e0, type: 3}
   bulletPlayerBPrefab: {fileID: 2471028974556218390, guid: ff938b380255e334ea94df82425a7133, type: 3}
   bulletEnemyAPrefab: {fileID: 2471028974556218390, guid: 76d14035c1128ee47b306394cb1475fb, type: 3}

@@ -379,6 +379,63 @@ public class Player : MonoBehaviour
                         gameManager.UpdateBoomIcon(boom);
                     }
                     break;
+                case "Plus1":
+                    power++;
+                    transform.localScale += new Vector3(0.5f,0.5f, 0);
+                    if(speed >= 1)
+                    {
+                        speed -= 0.5f;
+                    }
+                    break;
+                case "Plus2":
+                    power += 2;
+                    transform.localScale += new Vector3(1f, 1f, 0);
+                    if (speed >= 1)
+                    {
+                        speed -= 1f;
+                    }
+                    break;
+                case "Plus3":
+                    power += 3;
+                    transform.localScale += new Vector3(1.5f, 1.5f, 0);
+                    if (speed >= 1)
+                    {
+                        speed -= 1.5f;
+                    }
+                    break;
+                case "Minus1":
+                    if (power >= 1)
+                    {
+                        power--;
+                    }
+                    transform.localScale -= new Vector3(0.5f, 0.5f, 0);
+                    if (speed <= 6)
+                    {
+                        speed += 0.5f;
+                    }
+                    break;
+                case "Minus2":
+                    if (power >= 1)
+                    {
+                        power -= 2;
+                    }
+                    transform.localScale -= new Vector3(1f, 1f, 0);
+                    if (speed <= 6)
+                    {
+                        speed += 1f;
+                    }
+                    break;
+                case "Minus3":
+                    if (power >= 1)
+                    {
+                        power -= 3;
+                    }
+                    transform.localScale -= new Vector3(1.5f, 1.5f, 0);
+                    if (speed <= 6)
+                    {
+                        speed += 1.5f;
+                    }
+                    break;
             }
             collision.gameObject.SetActive(false);
         }

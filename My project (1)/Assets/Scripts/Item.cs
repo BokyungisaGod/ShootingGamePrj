@@ -9,7 +9,6 @@ public class Item : MonoBehaviour
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-        
     }
 
     private void OnEnable()
