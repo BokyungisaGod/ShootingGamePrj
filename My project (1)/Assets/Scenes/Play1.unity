@@ -3930,7 +3930,7 @@ MonoBehaviour:
   maxBoom: 3
   power: 1
   maxPower: 6
-  maxShotDelay: 0.75
+  maxShotDelay: 0.3
   curShotDelay: 0
   bulletObjA: {fileID: 5140515611614148016, guid: 1f9c37c1a0362a244a5f6d88569e4802, type: 3}
   bulletObjB: {fileID: 2471028974556218390, guid: ff938b380255e334ea94df82425a7133, type: 3}
@@ -5649,7 +5649,7 @@ MonoBehaviour:
   enemyLPrefab: {fileID: 5761045088229356884, guid: 0db5bd4be9b58b94983ce9fc28ebe44a, type: 3}
   enemyMPrefab: {fileID: 5927666887451708960, guid: d3faa2e8c7d5e8b44ab8c9de9f32a386, type: 3}
   enemySPrefab: {fileID: 3154265365109034047, guid: 111e3fa024aea1e4dbd8442ac3080f81, type: 3}
-  enemyBPrefab: {fileID: 2047932821670792280, guid: 74e1b490da28a894bb2fe46086a797ea, type: 3}
+  enemyBPrefab: {fileID: 2258652200548098265, guid: ab3d2aa5a0a6bab4887a1e42c993bdd4, type: 3}
   enemyVPrefab: {fileID: 3154265365109034047, guid: 7f0d3f83d3c3cda4b80ba879930b201a, type: 3}
   enemyHPrefab: {fileID: 3154265365109034047, guid: 2c20fc83f3738dc4ca5295f8b4e92c35, type: 3}
   itemCoinPrefab: {fileID: 8883663402771222806, guid: 133bf0a6b5e3b3241bbf33dee0571afe, type: 3}
@@ -5669,6 +5669,7 @@ MonoBehaviour:
   bulletBossAPrefab: {fileID: 2471028974556218390, guid: c96a0be7a4a3fa94793e9ea4cff255ee, type: 3}
   bulletBossBPrefab: {fileID: 2471028974556218390, guid: 59162b89bf88a024aad40a8f2aa0c889, type: 3}
   explosionPrefab: {fileID: 1189007748606824378, guid: 2335f3ed2fe1d3d41a8238ed53ce5665, type: 3}
+  sliderPrefab: {fileID: 0}
 --- !u!4 &1845084893
 Transform:
   m_ObjectHideFlags: 0

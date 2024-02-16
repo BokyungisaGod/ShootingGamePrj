@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     public GameObject bulletObjA;
     public GameObject bulletObjB;
     public GameObject boomEffect;
+
     public GameManager gameManager;
     public ObjectManager objectManager;
     public bool isHit;
@@ -379,9 +380,9 @@ public class Player : MonoBehaviour
                         gameManager.UpdateBoomIcon(boom);
                     }
                     break;
-                case "Plus1":
+                case "Plus1": //Player가 Plus1 프리팹을 못먹음, 파워 3단계(?)
                     power++;
-                    transform.localScale += new Vector3(0.5f,0.5f, 0);
+                    transform.localScale += new Vector3(0.2f,0.2f, 0);
                     if(speed >= 1)
                     {
                         speed -= 0.5f;
@@ -389,48 +390,48 @@ public class Player : MonoBehaviour
                     break;
                 case "Plus2":
                     power += 2;
-                    transform.localScale += new Vector3(1f, 1f, 0);
+                    transform.localScale += new Vector3(0.4f, 0.4f, 0);
                     if (speed >= 1)
                     {
                         speed -= 1f;
                     }
                     break;
-                case "Plus3":
+                case "Plus3": //갑자기 총알 발사 안하고, 사라짐
                     power += 3;
-                    transform.localScale += new Vector3(1.5f, 1.5f, 0);
+                    transform.localScale += new Vector3(0.6f, 0.6f, 0);
                     if (speed >= 1)
                     {
                         speed -= 1.5f;
                     }
                     break;
-                case "Minus1":
-                    if (power >= 1)
+                case "Minus1": //Minus1을 먹었을 대, 파워가 3이 되고, 크기가 제일 작아짐
+                    if (power >= 2)
                     {
                         power--;
                     }
-                    transform.localScale -= new Vector3(0.5f, 0.5f, 0);
+                    transform.localScale -= new Vector3(0.2f, 0.2f, 0);
                     if (speed <= 6)
                     {
                         speed += 0.5f;
                     }
                     break;
-                case "Minus2":
-                    if (power >= 1)
+                case "Minus2": // 크기 변화 없음
+                    if (power >= 3)
                     {
                         power -= 2;
                     }
-                    transform.localScale -= new Vector3(1f, 1f, 0);
+                    transform.localScale -= new Vector3(0.4f, 0.4f, 0);
                     if (speed <= 6)
                     {
                         speed += 1f;
                     }
                     break;
-                case "Minus3":
-                    if (power >= 1)
+                case "Minus3": // 속도 빨라지고, 크기 작아지는데 갑자기 플레이어 앞뒤가 거꾸로 바뀜
+                    if (power >= 4)
                     {
                         power -= 3;
                     }
-                    transform.localScale -= new Vector3(1.5f, 1.5f, 0);
+                    transform.localScale -= new Vector3(0.6f, 0.6f, 0);
                     if (speed <= 6)
                     {
                         speed += 1.5f;

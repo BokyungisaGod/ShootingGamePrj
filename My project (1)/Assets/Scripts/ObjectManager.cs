@@ -23,6 +23,13 @@ public class ObjectManager : MonoBehaviour
     public GameObject minus2Prefab;
     public GameObject minus3Prefab;
 
+    public GameObject plus1Prefab;
+    public GameObject plus2Prefab;
+    public GameObject plus3Prefab;
+    public GameObject minus1Prefab;
+    public GameObject minus2Prefab;
+    public GameObject minus3Prefab;
+
     public GameObject bulletPlayerAPrefab;
     public GameObject bulletPlayerBPrefab;
     public GameObject bulletEnemyAPrefab;
@@ -31,7 +38,7 @@ public class ObjectManager : MonoBehaviour
     public GameObject bulletBossAPrefab;
     public GameObject bulletBossBPrefab;
     public GameObject explosionPrefab;
-
+    public GameObject sliderPrefab;
 
     GameObject[] enemyL;
     GameObject[] enemyM;
@@ -44,6 +51,13 @@ public class ObjectManager : MonoBehaviour
     GameObject[] itemCoin;
     GameObject[] itemPower;
     GameObject[] itemBoom;
+    GameObject[] plus1;
+    GameObject[] plus2;
+    GameObject[] plus3;
+    GameObject[] minus1;
+    GameObject[] minus2;
+    GameObject[] minus3;
+
     GameObject[] plus1;
     GameObject[] plus2;
     GameObject[] plus3;
@@ -76,6 +90,13 @@ public class ObjectManager : MonoBehaviour
         itemCoin = new GameObject[20];
         itemPower = new GameObject[10];
         itemBoom = new GameObject[10];
+        plus1 = new GameObject[10];
+        plus2 = new GameObject[10];
+        plus3 = new GameObject[10];
+        minus1 = new GameObject[10];
+        minus2 = new GameObject[10];
+        minus3 = new GameObject[10];
+
         plus1 = new GameObject[10];
         plus2 = new GameObject[10];
         plus3 = new GameObject[10];

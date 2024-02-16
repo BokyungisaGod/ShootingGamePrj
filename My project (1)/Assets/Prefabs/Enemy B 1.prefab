@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7706611198977147810}
   - component: {fileID: 6007838667239950400}
   - component: {fileID: 3252578397453808964}
+  - component: {fileID: -7763325480121299175}
   - component: {fileID: 211349741379626733}
   - component: {fileID: 9218189496324472159}
   m_Layer: 0
@@ -30,12 +31,11 @@ Transform:
   m_GameObject: {fileID: 2258652200548098265}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.965, y: -1.501, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3291683895840209727}
-  - {fileID: 7222872893185305107}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7706611198977147810
@@ -149,6 +149,40 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2.7, y: 1.5}
   m_Direction: 1
+--- !u!114 &-7763325480121299175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2258652200548098265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb2f377444f076458a3ee31249078d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyName: B
+  enemyScore: 0
+  speed: 1.5
+  health: 0
+  cnt: 0
+  sprites: []
+  maxShotDelay: 0
+  curShotDelay: 0
+  barScale: {fileID: 7222872893185305107}
+  defaultScale: {x: 0, y: 0, z: 0}
+  bulletObjA: {fileID: 0}
+  bulletObjB: {fileID: 0}
+  itemCoin: {fileID: 0}
+  itemPower: {fileID: 0}
+  itemBoom: {fileID: 0}
+  player: {fileID: 0}
+  objectManager: {fileID: 0}
+  gameManager: {fileID: 0}
+  patternIndex: 0
+  curPatternCount: 0
+  maxPatternCount: 
+  maxHealth: 0
 --- !u!50 &211349741379626733
 Rigidbody2D:
   serializedVersion: 4
@@ -242,7 +276,8 @@ Transform:
   m_LocalPosition: {x: -0.02780018, y: 1.7814, z: 0}
   m_LocalScale: {x: 2.9316, y: 0.3198, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7222872893185305107}
   m_Father: {fileID: 3911243410336849198}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2461960432816700623
@@ -303,15 +338,23 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3911243410336849198}
+    m_TransformParent: {fileID: 3291683895840209727}
     m_Modifications:
     - target: {fileID: 428938039713342798, guid: edc65084c8733974b9b4e793053e825a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.37895435
+      objectReference: {fileID: 0}
+    - target: {fileID: 428938039713342798, guid: edc65084c8733974b9b4e793053e825a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.24961467
+      objectReference: {fileID: 0}
+    - target: {fileID: 428938039713342798, guid: edc65084c8733974b9b4e793053e825a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.04
+      value: -0.484
       objectReference: {fileID: 0}
     - target: {fileID: 428938039713342798, guid: edc65084c8733974b9b4e793053e825a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.77
+      value: -0.035647232
       objectReference: {fileID: 0}
     - target: {fileID: 428938039713342798, guid: edc65084c8733974b9b4e793053e825a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -348,6 +391,18 @@ PrefabInstance:
     - target: {fileID: 2571832933625748302, guid: edc65084c8733974b9b4e793053e825a, type: 3}
       propertyPath: m_Name
       value: Square (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877713410247159500, guid: edc65084c8733974b9b4e793053e825a, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877713410247159500, guid: edc65084c8733974b9b4e793053e825a, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877713410247159500, guid: edc65084c8733974b9b4e793053e825a, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

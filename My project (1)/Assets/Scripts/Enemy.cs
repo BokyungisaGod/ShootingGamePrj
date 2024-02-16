@@ -16,6 +16,11 @@ public class Enemy : MonoBehaviour
     public float curShotDelay;
 
     SpriteRenderer spriteRenderer;
+    Animator anim;
+    Vector3 defaultV;
+
+    public Transform barScale;
+    public Vector3 defaultScale;
 
     public GameObject bulletObjA;
     public GameObject bulletObjB;
@@ -25,12 +30,11 @@ public class Enemy : MonoBehaviour
     public GameObject player;
     public ObjectManager objectManager;
     public GameManager gameManager;
-    Animator anim;
-    Vector3 defaultV;
+  
     public int patternIndex;
     public int curPatternCount;
     public int[] maxPatternCount;
-
+    public float maxHealth;
     //public string[] itemName;
 
     void Awake()
@@ -47,6 +51,8 @@ public class Enemy : MonoBehaviour
         {
             case "B":
                 health = 200;
+                maxHealth = health;
+                defaultScale = barScale.localScale;
                 Invoke("Stop", 2);
                 break;
             case "L":
@@ -242,10 +248,9 @@ public class Enemy : MonoBehaviour
     }
     public void OnHit(int dmg)
     {
-        if (health < 0|| cnt == 0&&(enemyName=="V"|| enemyName == "H"))
+        if (!gameObject.activeSelf|| cnt == 0&&(enemyName=="V"|| enemyName == "H"))
             return;
         
-        Debug.Log("��");
         if (enemyName == "V"|| enemyName == "H") 
         {
             cnt--;
@@ -259,6 +264,7 @@ public class Enemy : MonoBehaviour
 
         if (enemyName == "B") 
         {
+            UpdateHealthBar();
             anim.SetTrigger("OnHit");
         }
         else 
@@ -272,46 +278,53 @@ public class Enemy : MonoBehaviour
             playerLogic.score += enemyScore;
 
             int ran = enemyName == "B"|| enemyName == "V" ? 0 : Random.Range(0, 10);
-            if (ran < 3)
-            {
-                Debug.Log("not item");
-            }
+            //if (ran < 3)
+            //{
+            //    Debug.Log("not item");
+            //}
             if (ran < 10)
             {
+                Debug.Log("sibal");
                 int ranNum = Random.Range(1, 4);
                 int ranName = Random.Range(0, 2);
                 GameObject oper = ranName == 0 ? objectManager.MakeObj("Plus" + ranNum) : objectManager.MakeObj("Minus" + ranNum);
                 //GameObject Plus = objectManager.MakeObj("Plus" + ranNum);
                 oper.transform.position = transform.position;
             }
-            else if (ran < 6)
-            {
-                GameObject itemCoin = objectManager.MakeObj("itemCoin");
-                itemCoin.transform.position = transform.position;
-            }
-            else if (ran < 8)
-            {
-                GameObject itemPower = objectManager.MakeObj("itemPower");
-                itemPower.transform.position = transform.position;
-            }
-            else if (ran < 10)
-            {
-                GameObject itemBoom = objectManager.MakeObj("itemBoom");
-                itemBoom.transform.position = transform.position;
-            }
+            //else if (ran < 6)
+            //{
+            //    GameObject itemCoin = objectManager.MakeObj("itemCoin");
+            //    itemCoin.transform.position = transform.position;
+            //}
+            //else if (ran < 8)
+            //{
+            //    GameObject itemPower = objectManager.MakeObj("itemPower");
+            //    itemPower.transform.position = transform.position;
+            //}
+            //else if (ran < 10)
+            //{
+            //    GameObject itemBoom = objectManager.MakeObj("itemBoom");
+            //    itemBoom.transform.position = transform.position;
+            //}
             gameObject.SetActive(false);
             gameManager.CallExplosion(transform.position, enemyName);
             transform.rotation = Quaternion.identity;
 
             if (enemyName == "B") 
             {
+                barScale.localScale = defaultScale;
                 gameManager.StageEnd();
             }
 
         }
 
     }
-
+    void UpdateHealthBar()
+    {
+        Vector3 newScale = barScale.localScale;
+        newScale.x = defaultScale.x * health / maxHealth;
+        barScale.localScale = newScale;
+    }
     void ReturnSprite() 
     {
         spriteRenderer.sprite = sprites[0];
