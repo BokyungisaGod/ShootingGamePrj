@@ -87,22 +87,36 @@ public class Enemy : MonoBehaviour
     }
     void Think()
     {
-        patternIndex = patternIndex == 3 ? 0 : patternIndex + 1;
+        patternIndex = patternIndex == 6 ? 0 : patternIndex + 1;
         curPatternCount = 0;
 
         switch (patternIndex) 
         {
             case 0:
-                FireForward();
+                FireSpiral();
+                //FireForward();
+                //FireRotation();
+
                 break;
             case 1:
-                FireShot();
+                //FireShot();
+                FireDiagonal();
                 break;
             case 2:
-                FireArc();
+                //FireArc();
+                FireRandom();
                 break;
             case 3:
                 FireAround();
+                break;
+            case 4:
+                FireRotation();
+                break;
+            case 5:
+                FireDiagonal();
+                break;
+            case 6:
+                FireRandom();
                 break;
         }
     }
@@ -199,6 +213,160 @@ public class Enemy : MonoBehaviour
         else
             Invoke("Think", 3);
     }
+
+
+
+
+    void FireRotation()
+    {
+        if (health <= 0) return;
+        int bulletCount = 20; // 탄환의 개수
+        float angleStep = 360f / bulletCount; // 각도 간격
+
+        for (int i = 0; i < bulletCount; i++)
+        {
+            GameObject bullet = objectManager.MakeObj("bulletBossB");
+            bullet.transform.position = transform.position;
+            bullet.transform.rotation = Quaternion.identity;
+            Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
+
+            float angle = i * angleStep;
+            Vector2 dir = Quaternion.Euler(0, 0, angle) * Vector2.down;
+            rigid.AddForce(dir * 3, ForceMode2D.Impulse);
+        }
+
+        curPatternCount++;
+        if (curPatternCount < maxPatternCount[patternIndex])
+            Invoke("FireRotation", 0.3f);
+        else
+            Invoke("Think", 3);
+    }
+
+    void FireDiagonal()
+    {
+        //if (health <= 0) return;
+        //int bulletCount = 10; // 탄환의 개수
+
+        //for (int i = 0; i < bulletCount; i++)
+        //{
+        //    GameObject bullet = objectManager.MakeObj("bulletBossB");
+        //    bullet.transform.position = transform.position;
+        //    bullet.transform.rotation = Quaternion.identity;
+        //    Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
+
+        //    Vector2 dir = (player.transform.position - transform.position).normalized;
+        //    dir.x += i * 0.2f; // x 방향으로 일정한 간격으로 이동
+        //    rigid.AddForce(dir * 3, ForceMode2D.Impulse);
+        //}
+
+        //curPatternCount++;
+        //if (curPatternCount < maxPatternCount[patternIndex])
+        //    Invoke("FireDiagonal", 0.5f);
+        //else
+        //    Invoke("Think", 3);
+        if (health <= 0) return;
+        int bulletCount = 6; // 탄환의 총 개수
+        int rightBullets = 3; // 오른쪽으로 공격할 탄환 개수
+        int leftBullets = bulletCount - rightBullets; // 왼쪽으로 공격할 탄환 개수
+
+        for (int i = 0; i < bulletCount; i++)
+        {
+            GameObject bullet = objectManager.MakeObj("bulletBossB");
+            bullet.transform.position = transform.position;
+            bullet.transform.rotation = Quaternion.identity;
+            Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
+
+            Vector2 dir = (player.transform.position - transform.position).normalized;
+            // 오른쪽으로 3번, 왼쪽으로 3번 번갈아가며 이동하는 로직
+            if (i < rightBullets)
+                dir.x += i * 0.2f; // 오른쪽으로 이동
+            else
+                dir.x -= (i - rightBullets) * 0.2f; // 왼쪽으로 이동
+            rigid.AddForce(dir * 3, ForceMode2D.Impulse);
+        }
+
+        curPatternCount++;
+        if (curPatternCount < maxPatternCount[patternIndex])
+            Invoke("FireDiagonal", 0.5f);
+        else
+            Invoke("Think", 3);
+    }
+
+    void FireRandom()
+    {
+        if (health <= 0) return;
+        int bulletCount = 10; // 탄환의 개수
+
+        for (int i = 0; i < bulletCount; i++)
+        {
+            GameObject bullet = objectManager.MakeObj("bulletBossB");
+            bullet.transform.position = transform.position;
+            bullet.transform.rotation = Quaternion.identity;
+            Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
+
+            Vector2 dir = (player.transform.position - transform.position).normalized;
+            Vector2 randomDir = Random.insideUnitCircle.normalized;
+            dir += randomDir * Random.Range(0.3f, 1f); // 랜덤한 방향으로 이동
+            rigid.AddForce(dir * 3, ForceMode2D.Impulse);
+        }
+
+        curPatternCount++;
+        if (curPatternCount < maxPatternCount[patternIndex])
+            Invoke("FireRandom", 0.5f);
+        else
+            Invoke("Think", 3);
+    }
+
+
+
+
+    void FireSpiral()
+    {
+        if (health <= 0) return;
+
+        int bulletCount = 15; // 별 모양으로 발사할 탄환의 개수
+        float angleStep = 360f / bulletCount; // 별 모양의 각도 간격
+        float currentAngle = 0f; // 현재 각도
+
+        for (int i = 0; i < bulletCount; i++)
+        {
+            GameObject bullet = objectManager.MakeObj("bulletBossB");
+            bullet.transform.position = transform.position;
+            bullet.transform.rotation = Quaternion.identity;
+            Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
+
+            // 현재 각도에 따라 탄환을 발사 위치를 조절
+            Vector2 dir = Quaternion.Euler(0, 0, currentAngle) * Vector2.right;
+            bullet.transform.position += (Vector3)dir * 0.5f; // 별의 테두리에서 발사
+
+            // 탄환의 방향 설정 (별의 한 꼭짓점에서 시작하여 시계 방향으로 원을 따라 이동)
+            Vector2 targetDir = Quaternion.Euler(0, 0, currentAngle - 90f) * Vector2.right; // 90도 회전하여 시작 방향을 조정
+            rigid.velocity = targetDir * 8; // 탄환의 속도를 설정하여 발사
+
+            // 다음 탄환을 발사할 각도 계산 (시계 방향으로 원을 따라 이동)
+            currentAngle += angleStep;
+        }
+
+        curPatternCount++;
+        if (curPatternCount < maxPatternCount[patternIndex])
+            Invoke("FireStar", 0.5f); // 별 공격 간격
+        else
+            Invoke("Think", 3); // 패턴 변경 간격
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     void Update()
     {
         if (enemyName == "B")
@@ -313,12 +481,14 @@ public class Enemy : MonoBehaviour
             if (enemyName == "B") 
             {
                 barScale.localScale = defaultScale;
+                Invoke("GameOver", 6);
                 gameManager.StageEnd();
             }
 
         }
 
     }
+
     void UpdateHealthBar()
     {
         Vector3 newScale = barScale.localScale;

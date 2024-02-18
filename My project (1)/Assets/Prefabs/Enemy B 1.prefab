@@ -179,9 +179,9 @@ MonoBehaviour:
   player: {fileID: 0}
   objectManager: {fileID: 0}
   gameManager: {fileID: 0}
-  patternIndex: 0
+  patternIndex: -1
   curPatternCount: 0
-  maxPatternCount: 
+  maxPatternCount: 0200000014000000630000000a000000140000000a0000000a000000
   maxHealth: 0
 --- !u!50 &211349741379626733
 Rigidbody2D:

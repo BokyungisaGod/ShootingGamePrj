@@ -69,8 +69,13 @@ public class GameManager : MonoBehaviour
             Clearstage = PlayerPrefs.GetInt("Clearstage");
             Clearstage++;
             PlayerPrefs.SetInt("Clearstage", Clearstage);
-            SceneManager.LoadScene("Main");
+            Invoke("SceneChange",6);
         }
+    }
+
+    public void SceneChange()
+    {
+        SceneManager.LoadScene("Main");
     }
     void ReadSpawnFile()
     {
