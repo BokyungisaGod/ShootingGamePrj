@@ -337,8 +337,9 @@ public class Player : MonoBehaviour
 
             }
         }
-        else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyBullet")
+        else if (collision.gameObject.tag == "Boss" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyBullet")
         {
+
             if (isRespawnTime)
                 return;
             if (isHit)
@@ -358,11 +359,11 @@ public class Player : MonoBehaviour
             }
 
             gameObject.SetActive(false);
-            //if(collision.gameObject.name != "Enemy B") 
-            //{
-            //    collision.gameObject.SetActive(false);
-            //}
-            collision.gameObject.SetActive(false);
+            if (collision.gameObject.tag != "Boss")
+            {
+                Debug.Log(collision.gameObject.name);
+                collision.gameObject.SetActive(false);
+            }
         }
         else if (collision.gameObject.tag == "Item") 
         {
