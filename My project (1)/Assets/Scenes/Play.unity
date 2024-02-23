@@ -3990,7 +3990,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2311659948842064771, guid: 8677e01661d08994485953f7c2fab8f2, type: 3}
+  m_Sprite: {fileID: 3182117760868441976, guid: cd7f59f26467d6949bc037cc4ec5a1a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4011,7 +4011,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3.63, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1257469022}
@@ -4054,7 +4054,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357523246}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 85145ec4143412f4584dcf07bc60631c, type: 2}
   m_CullingMode: 0
@@ -5653,8 +5653,8 @@ MonoBehaviour:
   minus1Prefab: {fileID: 8883663402771222806, guid: bad7a1fd979b34e3f8c098744a40d607, type: 3}
   minus2Prefab: {fileID: 8883663402771222806, guid: c2a7a09b13ba34e329dc86604156eef3, type: 3}
   minus3Prefab: {fileID: 8883663402771222806, guid: 206c9fcb12619430ebfaff31ae5eec08, type: 3}
-  bulletPlayerAPrefab: {fileID: 5140515611614148016, guid: 74a12495260a4f445b9d24328f1bb3e0, type: 3}
-  bulletPlayerBPrefab: {fileID: 2471028974556218390, guid: ff938b380255e334ea94df82425a7133, type: 3}
+  bulletPlayerAPrefab: {fileID: 5140515611614148016, guid: b36373a50af8e664db4f1a4a04a06536, type: 3}
+  bulletPlayerBPrefab: {fileID: 2471028974556218390, guid: ca6d0c8e0455fef438c9ee3b85ba7cdd, type: 3}
   bulletEnemyAPrefab: {fileID: 2471028974556218390, guid: 76d14035c1128ee47b306394cb1475fb, type: 3}
   bulletEnemyBPrefab: {fileID: 2471028974556218390, guid: e9738cdbdf997de4ab5cd5fece0386df, type: 3}
   bulletFollowerPrefab: {fileID: 5140515611614148016, guid: ae8a179ceb373bc4aa00ca1b94d36c24, type: 3}

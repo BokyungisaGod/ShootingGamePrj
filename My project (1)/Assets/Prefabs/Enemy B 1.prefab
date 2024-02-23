@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 2192450021786810173, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  m_Sprite: {fileID: 1113887328953659925, guid: 0753a3e970619f444aaea7105539092c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +98,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2258652200548098265}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: df4f9fc5cbc32934783823d1b5b5bc38, type: 2}
   m_CullingMode: 0
@@ -166,7 +166,9 @@ MonoBehaviour:
   speed: 1.5
   health: 0
   cnt: 0
-  sprites: []
+  sprites:
+  - {fileID: 1113887328953659925, guid: d3dabbe89b89d9c44a617c34eacc8fcb, type: 3}
+  - {fileID: 8253769807523678238, guid: 277146a4987554c41a02d1fb2d4015b3, type: 3}
   maxShotDelay: 0
   curShotDelay: 0
   barScale: {fileID: 7222872893185305107}
@@ -182,7 +184,7 @@ MonoBehaviour:
   bulletSpeed: 5
   patternIndex: -1
   curPatternCount: 0
-  maxPatternCount: 02000000140000000200000002000000140000000a0000000a0000000a000000
+  maxPatternCount: 0a000000140000000a000000660000000f000000050000000500000005000000
   maxHealth: 0
 --- !u!50 &211349741379626733
 Rigidbody2D:
@@ -274,7 +276,7 @@ Transform:
   m_GameObject: {fileID: 5867034033005046211}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02780018, y: 1.7814, z: 0}
+  m_LocalPosition: {x: -0.02780018, y: 2.14, z: 0}
   m_LocalScale: {x: 2.9316, y: 0.3198, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

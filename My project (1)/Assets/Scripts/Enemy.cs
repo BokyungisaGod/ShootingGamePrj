@@ -96,10 +96,7 @@ public class Enemy : MonoBehaviour
         switch (patternIndex) 
         {
             case 0:
-                //FireForward();
-                //FireRotation();
-                
-                FireRandom();
+                FireForward();
                 break;
             case 1:
                 //FireShot();
@@ -117,15 +114,15 @@ public class Enemy : MonoBehaviour
             case 4:
                 FireSpiral();
                 break;
-            //case 5:
-                
-            //    break;
-            //case 6:
-                
-            //    break;
-            //case 7:
-                
-            //    break;
+            case 5:
+                FireRandom();
+                break;
+            case 6:
+                FireRotation();
+                break;
+            case 7:
+
+                break;
         }
     }
     void FireForward()
@@ -453,18 +450,19 @@ public class Enemy : MonoBehaviour
         {
             
             health -= dmg;
-        }  
+        }
 
-        if (enemyName == "B") 
+        if (enemyName == "B")
         {
             UpdateHealthBar();
-            anim.SetTrigger("OnHit");
         }
-        else 
-        {
-            spriteRenderer.sprite = sprites[1];
-            Invoke("ReturnSprite", 0.1f);
-        }
+        //else 
+        //{
+        //    spriteRenderer.sprite = sprites[1];
+        //    Invoke("ReturnSprite", 0.1f);
+        //}
+        spriteRenderer.sprite = sprites[1];
+        Invoke("ReturnSprite", 1f);
         if (health <= 0||cnt==0 && (enemyName == "V" || enemyName == "H")) 
         {
             Player playerLogic = player.GetComponent<Player>();
