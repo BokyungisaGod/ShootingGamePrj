@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2770194913432597588, guid: 2ffffe5e583c46445a77ef9e1fd9e171, type: 3}
+  m_Sprite: {fileID: 97954189904423472, guid: 434e9584ccef26a46ab7fce0dae1c36c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -172,6 +172,8 @@ MonoBehaviour:
   - {fileID: -4385639542379807352, guid: 98a2d9b3897f1a141a843a6288470899, type: 3}
   maxShotDelay: 2
   curShotDelay: 0
+  barScale: {fileID: 0}
+  defaultScale: {x: 0, y: 0, z: 0}
   bulletObjA: {fileID: 2471028974556218390, guid: 76d14035c1128ee47b306394cb1475fb, type: 3}
   bulletObjB: {fileID: 2471028974556218390, guid: e9738cdbdf997de4ab5cd5fece0386df, type: 3}
   itemCoin: {fileID: 8883663402771222806, guid: 133bf0a6b5e3b3241bbf33dee0571afe, type: 3}
@@ -180,6 +182,8 @@ MonoBehaviour:
   player: {fileID: 0}
   objectManager: {fileID: 0}
   gameManager: {fileID: 0}
+  bulletSpeed: 5
   patternIndex: 0
   curPatternCount: 0
   maxPatternCount: 
+  maxHealth: 0

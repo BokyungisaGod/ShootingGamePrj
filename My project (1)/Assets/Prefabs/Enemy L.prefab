@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8421458170528590454, guid: 7102a9201a4db3f4ba2b3b565f973b4a, type: 3}
+  m_Sprite: {fileID: -6257576849107188664, guid: 04236ce71b74695409a6c5e9008bdf8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,7 +125,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.3333334, y: 1.125}
+    oldSize: {x: 3.62, y: 4.14}
     newSize: {x: 1.3333334, y: 1.125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -176,14 +176,24 @@ MonoBehaviour:
   enemyScore: 500
   speed: 1
   health: 50
+  cnt: 0
   sprites:
-  - {fileID: -8421458170528590454, guid: 7102a9201a4db3f4ba2b3b565f973b4a, type: 3}
-  - {fileID: 3714015224569861163, guid: 7102a9201a4db3f4ba2b3b565f973b4a, type: 3}
+  - {fileID: -6257576849107188664, guid: 04236ce71b74695409a6c5e9008bdf8f, type: 3}
+  - {fileID: 8754567852232287804, guid: fe911a4d0bad08844bb9517dc39fec8f, type: 3}
   maxShotDelay: 3.5
   curShotDelay: 0
+  barScale: {fileID: 0}
+  defaultScale: {x: 0, y: 0, z: 0}
   bulletObjA: {fileID: 2471028974556218390, guid: 76d14035c1128ee47b306394cb1475fb, type: 3}
   bulletObjB: {fileID: 2471028974556218390, guid: e9738cdbdf997de4ab5cd5fece0386df, type: 3}
   itemCoin: {fileID: 8883663402771222806, guid: 133bf0a6b5e3b3241bbf33dee0571afe, type: 3}
   itemPower: {fileID: 5294495799614657578, guid: a7993503e37cc0f4491abe33f0b09ac2, type: 3}
   itemBoom: {fileID: 5070206009375422894, guid: d0987306e844f9145b04d6cfad1a4af9, type: 3}
   player: {fileID: 0}
+  objectManager: {fileID: 0}
+  gameManager: {fileID: 0}
+  bulletSpeed: 5
+  patternIndex: 0
+  curPatternCount: 0
+  maxPatternCount: 
+  maxHealth: 0
