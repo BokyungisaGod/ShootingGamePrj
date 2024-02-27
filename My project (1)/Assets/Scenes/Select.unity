@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 11664170}
   - component: {fileID: 11664169}
   - component: {fileID: 11664172}
+  - component: {fileID: 11664173}
   m_Layer: 5
   m_Name: C1
   m_TagString: Untagged
@@ -235,7 +236,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3095906551936233971, guid: 7088dd9ed803ddd48816166a2263978f, type: 3}
+  m_Sprite: {fileID: 4568772606017827860, guid: 3cde7f268858f7a48b31c242c5c1073b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -271,6 +272,20 @@ MonoBehaviour:
   stageGroup: {fileID: 0}
   soundGroup: {fileID: 0}
   stage: 0
+--- !u!114 &11664173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11664167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf7edbef526e4d49ac6c26c08c90381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startSprite: {fileID: 4568772606017827860, guid: 3cde7f268858f7a48b31c242c5c1073b, type: 3}
+  hoverSprite: {fileID: 5621347236829677210, guid: 15ecfb1c6f873c546aa4dab7cac60154, type: 3}
 --- !u!1 &32960190
 GameObject:
   m_ObjectHideFlags: 0
@@ -2281,7 +2296,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4521266523838382516, guid: fbc2a509c73285d4eaafe0b4d761c3b3, type: 3}
+  m_Sprite: {fileID: -4778763522983088160, guid: 017228ad09aa24e40b0ae981dc010e16, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

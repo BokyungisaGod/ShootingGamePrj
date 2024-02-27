@@ -17,6 +17,14 @@ public class BtnType : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public int stage;
     Vector3 defaultScale;   
     bool isSound;
+
+    // 버튼의 이미지를 할당할 변수
+    //private Image buttonImage;
+    //// 마우스가 올라갔을 때의 스프라이트
+    //public Sprite hoverSprite;
+    //// 버튼의 기본 스프라이트
+    //private Sprite defaultSprite;
+
     public void Awake()
     {
         audiomanager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -35,6 +43,23 @@ public class BtnType : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         else
             gameObject.SetActive(true);
     }
+
+    //// 버튼이 활성화될 때 실행되는 함수
+    //void Start()
+    //{
+    //    // 버튼의 Image 컴포넌트 가져오기
+    //    buttonImage = GetComponent<Image>();
+    //    // 기본 스프라이트 설정
+    //    defaultSprite = buttonImage.sprite;
+    //}
+
+    //// 버튼에 마우스가 들어왔을 때 호출될 함수
+    //public void OnPointerEnter(PointerEventData eventData)
+    //{
+    //    // 버튼의 스프라이트를 hoverSprite로 변경
+    //    buttonImage.sprite = hoverSprite;
+    //}
+
     public void OnBtnClick() 
     {
         //SoundManager.instance.SFXPlay("Click", clip);
@@ -109,6 +134,7 @@ public class BtnType : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        buttonScale.localScale = defaultScale; 
+        buttonScale.localScale = defaultScale;
+        //buttonImage.sprite = defaultSprite;
     }
 }

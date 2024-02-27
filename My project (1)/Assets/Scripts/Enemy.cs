@@ -90,18 +90,20 @@ public class Enemy : MonoBehaviour
     }
     void Think()
     {
-        patternIndex = patternIndex == 6 ? 0 : patternIndex + 1;
+        patternIndex = patternIndex ==  8? 0 : patternIndex + 1;
         curPatternCount = 0;
 
         switch (patternIndex) 
         {
             case 0:
-                FireForward();
+                //FireForward();
+                FireDiagonal();
                 break;
             case 1:
                 //FireShot();
                 //FireDiagonal();
-                FireRotation();
+                FireForward();
+                //FireRotation();
                 break;
             case 2:
                 //FireArc();
@@ -231,7 +233,7 @@ public class Enemy : MonoBehaviour
 
         for (int i = 0; i < bulletCount; i++)
         {
-            GameObject bullet = objectManager.MakeObj("bulletBossB");
+            GameObject bullet = objectManager.MakeObj("bulletBossA");
             bullet.transform.position = transform.position;
             bullet.transform.rotation = Quaternion.identity;
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
