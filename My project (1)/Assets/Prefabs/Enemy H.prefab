@@ -168,8 +168,8 @@ MonoBehaviour:
   health: 3
   cnt: 0
   sprites:
-  - {fileID: 2770194913432597588, guid: 2ffffe5e583c46445a77ef9e1fd9e171, type: 3}
-  - {fileID: -4385639542379807352, guid: 98a2d9b3897f1a141a843a6288470899, type: 3}
+  - {fileID: 97954189904423472, guid: 434e9584ccef26a46ab7fce0dae1c36c, type: 3}
+  - {fileID: 3394277731765196916, guid: 367baf6d8beb87a4f9056fd6098e6c81, type: 3}
   maxShotDelay: 2
   curShotDelay: 0
   barScale: {fileID: 0}

@@ -421,6 +421,7 @@ GameObject:
   - component: {fileID: 168312658}
   - component: {fileID: 168312660}
   - component: {fileID: 168312659}
+  - component: {fileID: 168312661}
   m_Layer: 5
   m_Name: Life Icon
   m_TagString: Untagged
@@ -485,6 +486,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168312657}
   m_CullTransparentMesh: 1
+--- !u!95 &168312661
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168312657}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 98c19c94c4a2ac24ba170c00e38747b3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &190196413
 GameObject:
   m_ObjectHideFlags: 0
@@ -3487,6 +3510,7 @@ GameObject:
   - component: {fileID: 1101729419}
   - component: {fileID: 1101729421}
   - component: {fileID: 1101729420}
+  - component: {fileID: 1101729422}
   m_Layer: 5
   m_Name: Life Icon (1)
   m_TagString: Untagged
@@ -3551,6 +3575,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101729418}
   m_CullTransparentMesh: 1
+--- !u!95 &1101729422
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101729418}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 98c19c94c4a2ac24ba170c00e38747b3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1105166304
 GameObject:
   m_ObjectHideFlags: 0
@@ -4662,7 +4708,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3.63, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1257469022}
@@ -5139,6 +5185,7 @@ GameObject:
   - component: {fileID: 1437251196}
   - component: {fileID: 1437251198}
   - component: {fileID: 1437251197}
+  - component: {fileID: 1437251199}
   m_Layer: 5
   m_Name: Boom Icon 3
   m_TagString: Untagged
@@ -5203,6 +5250,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437251195}
   m_CullTransparentMesh: 1
+--- !u!95 &1437251199
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437251195}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 98c19c94c4a2ac24ba170c00e38747b3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1475722844
 GameObject:
   m_ObjectHideFlags: 0
@@ -7128,6 +7197,7 @@ GameObject:
   - component: {fileID: 2004288041}
   - component: {fileID: 2004288043}
   - component: {fileID: 2004288042}
+  - component: {fileID: 2004288044}
   m_Layer: 5
   m_Name: Life Icon (2)
   m_TagString: Untagged
@@ -7192,6 +7262,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004288040}
   m_CullTransparentMesh: 1
+--- !u!95 &2004288044
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004288040}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 98c19c94c4a2ac24ba170c00e38747b3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2028193234
 GameObject:
   m_ObjectHideFlags: 0
@@ -7371,6 +7463,7 @@ GameObject:
   - component: {fileID: 2056974544}
   - component: {fileID: 2056974546}
   - component: {fileID: 2056974545}
+  - component: {fileID: 2056974547}
   m_Layer: 5
   m_Name: Boom Icon 2
   m_TagString: Untagged
@@ -7435,6 +7528,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056974543}
   m_CullTransparentMesh: 1
+--- !u!95 &2056974547
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056974543}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 98c19c94c4a2ac24ba170c00e38747b3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2093926087
 GameObject:
   m_ObjectHideFlags: 0

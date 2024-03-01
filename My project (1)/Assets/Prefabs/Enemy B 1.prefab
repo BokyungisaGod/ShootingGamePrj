@@ -146,7 +146,7 @@ MonoBehaviour:
   bulletSpeed: 5
   patternIndex: -1
   curPatternCount: 0
-  maxPatternCount: 02000000140000000a000000660000000f000000050000000500000005000000
+  maxPatternCount: 02000000050000000300000005000000050000000a0000000500000005000000
   maxHealth: 0
 --- !u!50 &211349741379626733
 Rigidbody2D:
@@ -205,7 +205,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

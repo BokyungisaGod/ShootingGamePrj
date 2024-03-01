@@ -420,6 +420,7 @@ public class Player : MonoBehaviour
                     {
                         power--;
                     }
+
                     transform.localScale -= new Vector3(0.2f, 0.2f, 0);
                     if (speed <= 6)
                     {
