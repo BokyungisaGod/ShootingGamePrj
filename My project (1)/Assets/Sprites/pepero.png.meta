@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pepero_0: -3306556989498756053
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

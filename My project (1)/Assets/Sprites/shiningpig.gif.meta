@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      shiningpig_0: 5621347236829677210
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

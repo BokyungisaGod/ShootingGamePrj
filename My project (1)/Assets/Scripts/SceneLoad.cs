@@ -13,7 +13,7 @@ public class SceneLoad : MonoBehaviour
     AsyncOperation operation;
     IEnumerator LoadScene() 
     {
-
+        
         yield return null;
         if(PlayerPrefs.GetInt("Character")==1)
              operation = SceneManager.LoadSceneAsync("Play");

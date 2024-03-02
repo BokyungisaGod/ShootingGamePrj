@@ -1,20 +1,20 @@
 ﻿<Properties StartupConfiguration="{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/bokyung/Desktop/ShootingGamePrj-main/My project (1)/Assets/Resources/Stage 1.txt" relfile="Assets/Resources/Stage 1.txt" line="3" column="1" />
+      <Breakpoint file="/Users/bokyung/Desktop/ShootingGamePrj/My project (1)/Assets/Resources/Stage 1.txt" relfile="Assets/Resources/Stage 1.txt" line="3" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0b38a591-2c26-4ce6-8a9f-0c5275096c36" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/VolumeSettings.cs">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Item.cs" Line="11" Column="45" />
-      <File FileName="Assets/Scripts/Enemy.cs" Line="39" Column="38" />
-      <File FileName="Assets/Scripts/ObjectManager.cs" Line="183" Column="10" />
-      <File FileName="Assets/Resources/Stage 1.txt" Line="8" Column="1" />
-      <File FileName="Assets/VolumeSettings.cs" Line="33" Column="30" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="39" Column="37" />
-      <File FileName="Assets/Scripts/Player.cs" Line="370" Column="39" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="173" Column="1" />
+      <File FileName="Assets/Scripts/pause.cs" Line="57" Column="9" />
+      <File FileName="Assets/Scripts/Enemy.cs" Line="530" Column="13" />
+      <File FileName="Assets/Scripts/ObjectManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Player.cs" Line="55" Column="1" />
+      <File FileName="Assets/Scripts/SceneLoad.cs" Line="13" Column="30" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,13 +23,11 @@
             <Node name="Assets" expanded="True">
               <Node name="Resources" expanded="True" />
               <Node name="Scripts" expanded="True" />
-              <Node name="VolumeSettings.cs" selected="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4f02297e-ea00-4fc3-b76e-2bd1d405db3d" />
 </Properties>

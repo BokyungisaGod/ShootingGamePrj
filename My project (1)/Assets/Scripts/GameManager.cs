@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
 
     public List<Spawn> spawnList;
     public int spawnIndex;
+    public int spawnCount;
+    public int spawnMax;
     public bool spawnEnd;
     // Update is called once per frame
 
@@ -48,7 +50,7 @@ public class GameManager : MonoBehaviour
         //stageAnim.GetComponent<Text>().text = "Stage 1" + "\nStart";
         clearAnim.GetComponent<Text>().text = "Stage " + stage + "\nClear";
         //clearAnim.GetComponent<Text>().text = "Stage 1" + "\nClear";
-        ReadSpawnFile();
+        //ReadSpawnFile();
         fadeAnim.SetTrigger("In");
     }
 
@@ -118,28 +120,64 @@ public class GameManager : MonoBehaviour
     void SpawnEnemy() 
     {
         int enemyIndex = 0;
-        switch (spawnList[spawnIndex].type) 
+        //switch (spawnList[spawnIndex].type) 
+        //{
+        //    case "S":
+        //        enemyIndex = 0;
+        //        break;
+        //    case "M":
+        //        enemyIndex = 1;
+        //        break;
+        //    case "L":
+        //        enemyIndex = 2;
+        //        break;
+        //    case "B":
+        //        enemyIndex = 3;
+        //        break;
+        //    case "V":
+        //        enemyIndex = 4;
+        //        break;
+        //    case "H":
+        //        enemyIndex = 5;
+        //        break;
+        //}
+        int ran = Random.Range(1, 10);
+        if (ran < 3)
         {
-            case "S":
-                enemyIndex = 0;
-                break;
-            case "M":
-                enemyIndex = 1;
-                break;
-            case "L":
-                enemyIndex = 2;
-                break;
-            case "B":
-                enemyIndex = 3;
-                break;
-            case "V":
-                enemyIndex = 4;
-                break;
-            case "H":
-                enemyIndex = 5;
-                break;
+            enemyIndex = 0;
+            nextSpawnDelay = 1f;
         }
-        int enemyPoint = spawnList[spawnIndex].point;
+        else if (ran < 6)
+        {
+            enemyIndex = 1;
+            nextSpawnDelay = 2f;
+
+        }
+        else if (ran < 8)
+        {
+            enemyIndex = 2;
+            nextSpawnDelay = 2f;
+
+        }
+        else if (ran < 9)
+        {
+            enemyIndex = 4;
+            nextSpawnDelay = 3f;
+
+        }
+        else if (ran < 10)
+        {
+            enemyIndex = 5;
+            nextSpawnDelay = 3f;
+        }
+
+        ran = Random.Range(0, 9);
+        int enemyPoint = ran;
+        if (spawnCount == 20)
+        {
+            enemyIndex = 3;
+            enemyPoint = 0;
+        }
         GameObject enemy = objectManager.MakeObj(enemyObjs[enemyIndex]);
         enemy.transform.position = spawnPoints[enemyPoint].position;
 
@@ -151,24 +189,36 @@ public class GameManager : MonoBehaviour
         if (enemyPoint == 5 || enemyPoint == 6) 
         {
             enemy.transform.Rotate(Vector3.back * 90);
-            rigid.velocity = new Vector2(enemyLogic.speed * (-1), -1);
+            
+            Vector2 dirVec= new Vector2(enemyLogic.speed * (-1), -1);
+            rigid.velocity = dirVec;
+            float bulletRotationAngle = Mathf.Atan2(dirVec.y, dirVec.x) * Mathf.Rad2Deg;
+
+            // 총알의 회전 설정
+            Quaternion rotation = Quaternion.Euler(0, 0, bulletRotationAngle + 90f); // 총알이 나아가는 방향으로 머리가 가도록 90도 회전
+            enemy.transform.rotation = rotation;
         }
         else if (enemyPoint == 7 || enemyPoint == 8)
         {
-            enemy.transform.Rotate(Vector3.forward * 90);
-            rigid.velocity = new Vector2(enemyLogic.speed, -1);
+            Vector2 dirVec = new Vector2(enemyLogic.speed, -1);
+
+            rigid.velocity = dirVec;
+            float bulletRotationAngle = Mathf.Atan2(dirVec.y, dirVec.x) * Mathf.Rad2Deg;
+
+            // 총알의 회전 설정
+            Quaternion rotation = Quaternion.Euler(0, 0, bulletRotationAngle + 90f); // 총알이 나아가는 방향으로 머리가 가도록 90도 회전
+            enemy.transform.rotation = rotation;
         }
         else
             rigid.velocity = new Vector2(0, enemyLogic.speed*(-1));
 
-        spawnIndex++;
-        if (spawnIndex == spawnList.Count) 
+        spawnCount++;
+        if (spawnCount == spawnMax) 
         {
             spawnEnd= true;
             return;
         }
 
-        nextSpawnDelay = spawnList[spawnIndex].delay;
     }
     public void UpdateLifeIcon(int life) 
     {
@@ -220,6 +270,6 @@ public class GameManager : MonoBehaviour
     public void GameRetry()
     {
         SceneManager.LoadScene(0);
-        //0�ƴϸ� ���̸�
+        //0�ƴϸ� ���̸�
     }
 }

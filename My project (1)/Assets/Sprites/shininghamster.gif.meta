@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      shininghamster_0: -6061304183481775078
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

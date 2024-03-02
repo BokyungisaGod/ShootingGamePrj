@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hamstercharacter_0: 4521266523838382516
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

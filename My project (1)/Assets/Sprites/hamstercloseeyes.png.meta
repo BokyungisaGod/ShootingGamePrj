@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hamstercloseeyes_0: -803402862896777311
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      jelly_0: 6745137483145456397
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
