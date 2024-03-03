@@ -185,7 +185,7 @@ public class Enemy : MonoBehaviour
     void FireArc()
     {
         if (health <= 0) return;
-        GameObject bullet = objectManager.MakeObj("bulletEnemyA");
+        GameObject bullet = objectManager.MakeObj("bulletEnemyB");
         bullet.transform.position = transform.position;
         bullet.transform.rotation = Quaternion.identity;
         Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
