@@ -73,9 +73,9 @@ public class Enemy : MonoBehaviour
                 transform.localScale = defaultV * cnt;
                 break;
             case "H":
-                cnt = 1;
-                health = 5;
-                transform.localScale = defaultV * cnt;
+                //cnt = 1;
+                //health = 5;
+                //transform.localScale = defaultV * cnt;
                 break;
         }
     }
@@ -484,8 +484,8 @@ public class Enemy : MonoBehaviour
         }
         else if (enemyName == "H")
         {
-            cnt += 3;
-            transform.localScale = defaultV * cnt * 3f;
+            cnt += 1;
+            transform.localScale = defaultV * cnt * 2f;
         }
 
         curShotDelay = 0;
