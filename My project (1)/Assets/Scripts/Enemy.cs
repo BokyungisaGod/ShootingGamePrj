@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
     public GameManager gameManager;
 
 
-    public float bulletSpeed = 5f; // ÃÑ¾ËÀÇ ¹ß»ç ¼Óµµ
+    public float bulletSpeed = 5f; // ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ ï¿½Óµï¿½
 
     public int patternIndex;
     public int curPatternCount;
@@ -59,22 +59,22 @@ public class Enemy : MonoBehaviour
                 Invoke("Stop", 2);
                 break;
             case "L":
-                health = 40;
+                health = 7;
                 break;
             case "M":
-                health = 10;
+                health = 5;
                 break;
             case "S":
                 health = 3;
                 break;
             case "V":
                 cnt = 5;
-                health = 10;
+                health =5;
                 transform.localScale = defaultV * cnt;
                 break;
             case "H":
                 cnt = 1;
-                health = 10;
+                health = 5;
                 transform.localScale = defaultV * cnt;
                 break;
         }
@@ -107,7 +107,7 @@ public class Enemy : MonoBehaviour
                 //FireAround();
                 break;
             case 3:
-                FireShot(); //·£´ýÀ¸·Î µµ³Ó ´øÁö´Â°Å
+                FireShot(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â°ï¿½
                 break;
             case 4:
                 FireRandom();
@@ -221,48 +221,48 @@ public class Enemy : MonoBehaviour
     void FireKnife()
     {
         if (health <= 0) return;
-        int cnt = 15; // ¹ß»çÇÒ ÃÑ¾Ë °³¼ö
-        float startAngle1 = 225f; // 5½Ã ¹æÇâ ½ÃÀÛ °¢µµ
-        float startAngle2 = 135f; // 7½Ã ¹æÇâ ½ÃÀÛ °¢µµ
-        float rotationAngle = 15f; // °¢ ÃÑ¾ËÀÇ È¸Àü °¢µµ
+        int cnt = 15; // ï¿½ß»ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½
+        float startAngle1 = 225f; // 5ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        float startAngle2 = 135f; // 7ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        float rotationAngle = 15f; // ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        // ¹ø°¥¾Æ°¡¸ç ½ÃÀÛ °¢µµ ¼³Á¤
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         float startAngle = (curPatternCount % 2 == 0) ? startAngle1 : startAngle2;
 
-        // ¹ß»çÇÒ ÃÑ¾ËÀÇ ÃÊ±â ¼Óµµ
+        // ï¿½ß»ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½ ï¿½Óµï¿½
         float initialSpeed = 5f;
 
         for (int index = 0; index < cnt; index++)
         {
             GameObject bullet = objectManager.MakeObj("bulletBossB");
 
-            // ÇöÀç ÃÑ¾ËÀÇ ¹ß»ç °¢µµ °è»ê
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             float bulletAngle = startAngle + index * rotationAngle;
 
-            // ¹ß»ç °¢µµ¸¦ ¶óµð¾ÈÀ¸·Î º¯È¯
+            // ï¿½ß»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
             float radians = bulletAngle * Mathf.Deg2Rad;
 
-            // ÃÑ¾ËÀÇ ÃÊ±â ¹æÇâ º¤ÅÍ °è»ê
+            // ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             Vector2 initialDirection = new Vector2(Mathf.Cos(radians), Mathf.Sin(radians));
 
-            // ÃÑ¾ËÀÇ ÃÊ±â ¼Óµµ º¤ÅÍ °è»ê
+            // ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½ ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             Vector2 initialVelocity = initialDirection * initialSpeed;
 
-            // ÃÑ¾Ë À§Ä¡ ¼³Á¤
-            bullet.transform.position = transform.position; // º¸½ºÀÇ À§Ä¡·Î ÃÊ±âÈ­
+            // ï¿½Ñ¾ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
+            bullet.transform.position = transform.position; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ê±ï¿½È­
 
-            // ÃÑ¾ËÀÇ ¹æÇâÀ¸·Î È¸Àü
-            bullet.transform.position = transform.position; // º¸½ºÀÇ À§Ä¡·Î ÃÊ±âÈ­
-            //ÃÑ¾ËÀÇ È¸Àü ¼³Á¤
+            // ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½
+            bullet.transform.position = transform.position; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ê±ï¿½È­
+            //ï¿½Ñ¾ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             float bulletRotationAngle = Mathf.Atan2(initialDirection.y, initialDirection.x) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.Euler(0, 0, bulletRotationAngle + 90f); // ÃÑ¾ËÀÌ ³ª¾Æ°¡´Â ¹æÇâÀ¸·Î ¸Ó¸®°¡ °¡µµ·Ï 90µµ È¸Àü
+            Quaternion rotation = Quaternion.Euler(0, 0, bulletRotationAngle + 90f); // ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 90ï¿½ï¿½ È¸ï¿½ï¿½
             bullet.transform.rotation = rotation;
 
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
-            // ÃÑ¾Ë¿¡ ÃÊ±â ¼Óµµ¸¦ ºÎ¿©
+            // ï¿½Ñ¾Ë¿ï¿½ ï¿½Ê±ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½Î¿ï¿½
             rigid.velocity = initialVelocity;
 
-            // ½Ã°£ÀÌ Áö³²¿¡ µû¶ó ÃÑ¾ËÀÇ ¼Óµµ¸¦ Á¶±Ý¾¿ Áõ°¡½ÃÄÑ ³ª¼±ÇüÀ¸·Î ¹ß»çµÇµµ·Ï ÇÔ
+            // ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½Çµï¿½ï¿½ï¿½ ï¿½ï¿½
             StartCoroutine(IncreaseBulletSpeedOverTime(rigid, index * 0.1f));
         }
 
@@ -277,21 +277,21 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        // ÃÑ¾ËÀÇ ÇöÀç ¼Óµµ¸¦ °¡Á®¿È
+        // ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         Vector2 currentVelocity = bulletRigidbody.velocity;
 
-        // ÇöÀç ¼Óµµ¿¡ ÀÏÁ¤·®ÀÇ º¸³Ê½º ¼Óµµ¸¦ ´õÇØÁÜ
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ê½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         currentVelocity += currentVelocity.normalized * 1.5f;
 
-        // ÃÑ¾ËÀÇ ¼Óµµ¸¦ ¾÷µ¥ÀÌÆ®
+        // ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
         bulletRigidbody.velocity = currentVelocity;
     }
 
     void FireRotation()
     {
         if (health <= 0) return;
-        int bulletCount = 20; // ÅºÈ¯ÀÇ °³¼ö
-        float angleStep = 360f / bulletCount; // °¢µµ °£°Ý
+        int bulletCount = 20; // ÅºÈ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        float angleStep = 360f / bulletCount; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         float rotationOffset = 5f;
 
         for (int i = 0; i < bulletCount; i++)
@@ -304,12 +304,12 @@ public class Enemy : MonoBehaviour
             float angle = i * angleStep;
             Vector2 dir = Quaternion.Euler(0, 0, angle) * Vector2.down;
 
-            // Â¦¼ö ¹øÂ° ÃÑ¾ËÀº ¿ÞÂÊÀ¸·Î È¸Àü, È¦¼ö ¹øÂ° ÃÑ¾ËÀº ¿À¸¥ÂÊÀ¸·Î È¸Àü
+            // Â¦ï¿½ï¿½ ï¿½ï¿½Â° ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½, È¦ï¿½ï¿½ ï¿½ï¿½Â° ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½
             float rotationDirection = i % 2 == 0 ? -1 : 1;
             Quaternion rotation = Quaternion.Euler(0, 0, angle + rotationDirection * rotationOffset);
             bullet.transform.rotation = rotation;
 
-            // Â¦¼ö ¹øÂ° ÃÑ¾ËÀº ¿ÞÂÊÀ¸·Î ¹æÇâÀ» Á¶Á¤
+            // Â¦ï¿½ï¿½ ï¿½ï¿½Â° ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (i % 2 == 0)
                 dir = Quaternion.Euler(0, 0, angle - rotationOffset) * Vector2.down;
 
@@ -327,7 +327,7 @@ public class Enemy : MonoBehaviour
     void FireDiagonal()
     {
         //if (health <= 0) return;
-        //int bulletCount = 10; // ÅºÈ¯ÀÇ °³¼ö
+        //int bulletCount = 10; // ÅºÈ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         //for (int i = 0; i < bulletCount; i++)
         //{
@@ -337,7 +337,7 @@ public class Enemy : MonoBehaviour
         //    Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
 
         //    Vector2 dir = (player.transform.position - transform.position).normalized;
-        //    dir.x += i * 0.2f; // x ¹æÇâÀ¸·Î ÀÏÁ¤ÇÑ °£°ÝÀ¸·Î ÀÌµ¿
+        //    dir.x += i * 0.2f; // x ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         //    rigid.AddForce(dir * 3, ForceMode2D.Impulse);
         //}
 
@@ -347,9 +347,9 @@ public class Enemy : MonoBehaviour
         //else
         //    Invoke("Think", 3);
         if (health <= 0) return;
-        int bulletCount = 6; // ÅºÈ¯ÀÇ ÃÑ °³¼ö
-        int rightBullets = 3; // ¿À¸¥ÂÊÀ¸·Î °ø°ÝÇÒ ÅºÈ¯ °³¼ö
-        int leftBullets = bulletCount - rightBullets; // ¿ÞÂÊÀ¸·Î °ø°ÝÇÒ ÅºÈ¯ °³¼ö
+        int bulletCount = 6; // ÅºÈ¯ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        int rightBullets = 3; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ÅºÈ¯ ï¿½ï¿½ï¿½ï¿½
+        int leftBullets = bulletCount - rightBullets; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ÅºÈ¯ ï¿½ï¿½ï¿½ï¿½
 
         for (int i = 0; i < bulletCount; i++)
         {
@@ -359,11 +359,11 @@ public class Enemy : MonoBehaviour
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
 
             Vector2 dir = (player.transform.position - transform.position).normalized;
-            // ¿À¸¥ÂÊÀ¸·Î 3¹ø, ¿ÞÂÊÀ¸·Î 3¹ø ¹ø°¥¾Æ°¡¸ç ÀÌµ¿ÇÏ´Â ·ÎÁ÷
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (i < rightBullets)
-                dir.x += i * 0.2f; // ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿
+                dir.x += i * 0.2f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
             else
-                dir.x -= (i - rightBullets) * 0.2f; // ¿ÞÂÊÀ¸·Î ÀÌµ¿
+                dir.x -= (i - rightBullets) * 0.2f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
             rigid.AddForce(dir * 3, ForceMode2D.Impulse);
         }
 
@@ -379,26 +379,26 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
             return;
 
-        // ÇÃ·¹ÀÌ¾î¸¦ ÇâÇÏ´Â ¹æÇâ º¤ÅÍ °è»ê
+        // ï¿½Ã·ï¿½ï¿½Ì¾î¸¦ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         Vector2 dirToPlayer = (player.transform.position - transform.position).normalized;
 
-        // ÃÑ¾Ë ¹ß»ç
+        // ï¿½Ñ¾ï¿½ ï¿½ß»ï¿½
         GameObject bullet = objectManager.MakeObj("bulletBossB");
         bullet.transform.position = transform.position;
         bullet.transform.rotation = Quaternion.identity;
         Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
 
-        // ÇÃ·¹ÀÌ¾î¿ÍÀÇ °¢µµ °è»êÇÏ¿© ¹æÇâ º¤ÅÍ ¼³Á¤
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         float angleToPlayer = Mathf.Atan2(dirToPlayer.y, dirToPlayer.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angleToPlayer, Vector3.forward);
         rigid.velocity = rotation * Vector2.right * bulletSpeed;
 
-        // ´ÙÀ½ ÆÐÅÏ ½ÇÇàÀ» À§ÇÑ Á¶°Ç È®ÀÎ
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
         curPatternCount++;
         if (curPatternCount < maxPatternCount[patternIndex])
-            Invoke("FireRandom", 0.1f); // Àç±Í È£Ãâ·Î ´ÙÀ½ ¹ß»ç ÆÐÅÏ ¿¹¾à
+            Invoke("FireRandom", 0.1f); // ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         else
-            Invoke("Think", 3); // ´ÙÀ½ ÆÐÅÏÀ¸·Î ³Ñ¾î°¡±â À§ÇØ Think ¸Þ¼Òµå È£Ãâ ¿¹¾à
+            Invoke("Think", 3); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾î°¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Think ï¿½Þ¼Òµï¿½ È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
 
@@ -409,21 +409,21 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
             return;
 
-        int bulletCount = 20; // ¹ß»çÇÒ ÃÑ¾Ë °³¼ö
-        float angleStep = 360f / bulletCount; // °¢µµ °£°Ý
+        int bulletCount = 20; // ï¿½ß»ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½
+        float angleStep = 360f / bulletCount; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        // È¸Àü ¼Óµµ
+        // È¸ï¿½ï¿½ ï¿½Óµï¿½
         float rotateSpeed = 80f;
 
         for (int i = 0; i < bulletCount; i++)
         {
-            // ¹ß»çµÉ °¢µµ °è»ê
+            // ï¿½ß»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             float angle = i * angleStep;
 
-            // ¹ß»çµÉ °¢µµ¿¡ ÇöÀç È¸Àü °¢µµ¸¦ ´õÇÏ¿© È¸Àü½ÃÅ´
+            // ï¿½ß»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½ È¸ï¿½ï¿½ï¿½ï¿½Å´
             float rotatedAngle = angle + (curPatternCount * rotateSpeed);
 
-            // °¢µµ¸¦ ¶óµð¾ÈÀ¸·Î º¯È¯ÇÏ¿© ÄÚ»çÀÎ°ú »çÀÎ ÇÔ¼ö¸¦ »ç¿ëÇÏ¿© ¹æÇâ ¼³Á¤
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï¿ï¿½ ï¿½Ú»ï¿½ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             float x = Mathf.Cos(rotatedAngle * Mathf.Deg2Rad);
             float y = Mathf.Sin(rotatedAngle * Mathf.Deg2Rad);
 
@@ -438,9 +438,9 @@ public class Enemy : MonoBehaviour
 
         curPatternCount++;
         if (curPatternCount < maxPatternCount[patternIndex])
-            Invoke("FireSpiral", 0.3f); // Àç±Í È£Ãâ·Î ´ÙÀ½ ¹ß»ç ÆÐÅÏ ¿¹¾à
+            Invoke("FireSpiral", 0.3f); // ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         else
-            Invoke("Think", 3); // ´ÙÀ½ ÆÐÅÏÀ¸·Î ³Ñ¾î°¡±â À§ÇØ Think ¸Þ¼Òµå È£Ãâ ¿¹¾à
+            Invoke("Think", 3); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾î°¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Think ï¿½Þ¼Òµï¿½ È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
 
@@ -484,8 +484,8 @@ public class Enemy : MonoBehaviour
         }
         else if (enemyName == "H")
         {
-            cnt++;
-            transform.localScale = defaultV * cnt;
+            cnt += 3;
+            transform.localScale = defaultV * cnt * 3f;
         }
 
         curShotDelay = 0;

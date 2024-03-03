@@ -1,9 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
-using Unity.VisualScripting;
 using UnityEngine;
+using Unity.VisualScripting;
 using UnityEngine.UIElements;
 
 
@@ -365,9 +364,12 @@ public class Player : MonoBehaviour
                 collision.gameObject.SetActive(false);
             }
         }
-        else if (collision.gameObject.tag == "Item") 
+        else if (collision.gameObject.tag == "Item")
         {
+            Vector3 defVec = new Vector3(0.15f, 0.15f, 0);
             Item item = collision.gameObject.GetComponent<Item>();
+            int ran = UnityEngine.Random.Range(1, 4);
+
             switch (item.type)
             {
                 case "Coin":
@@ -385,69 +387,81 @@ public class Player : MonoBehaviour
                 case "Boom":
                     if (boom == maxBoom)
                         score += 500;
-                    else 
+                    else
                     {
                         boom++;
                         gameManager.UpdateBoomIcon(boom);
                     }
                     break;
-                case "Plus1": //Player°¡ Plus1 ÇÁ¸®ÆÕÀ» ¸ø¸ÔÀ½, ÆÄ¿ö 3´Ü°è(?)
-                    power++;
-                    transform.localScale += new Vector3(0.2f,0.2f, 0);
-                    if(speed >= 1)
+
+
+                case "Plus1": //Playerê°€ Plus1 í”„ë¦¬íŒ¹ì„ ëª»ë¨¹ìŒ, íŒŒì›Œ 3ë‹¨ê³„(?)
+                    switch (ran)
                     {
-                        speed -= 0.5f;
+                        case 1:
+                            power++;
+                            break;
+                        case 2:
+                            transform.localScale += defVec * 1;
+                            break;
+                        case 3:
+                            speed += 0.5f;
+                            break;
                     }
                     break;
                 case "Plus2":
-                    power += 2;
-                    transform.localScale += new Vector3(0.4f, 0.4f, 0);
-                    if (speed >= 1)
+                    switch (ran)
                     {
-                        speed -= 1f;
-                    }
-                    break;
-                case "Plus3": //°©ÀÚ±â ÃÑ¾Ë ¹ß»ç ¾ÈÇÏ°í, »ç¶óÁü
-                    power += 3;
-                    transform.localScale += new Vector3(0.6f, 0.6f, 0);
-                    if (speed >= 1)
-                    {
-                        speed -= 1.5f;
-                    }
-                    break;
-                case "Minus1": //Minus1À» ¸Ô¾úÀ» ´ë, ÆÄ¿ö°¡ 3ÀÌ µÇ°í, Å©±â°¡ Á¦ÀÏ ÀÛ¾ÆÁü
-                    if (power >= 2)
-                    {
-                        power--;
+                        case 1:
+                            power += 2;
+                            break;
+                        case 2:
+                            transform.localScale += defVec * 2;
+                            break;
+                        case 3:
+                            speed += 1f;
+                            break;
                     }
 
-                    transform.localScale -= new Vector3(0.2f, 0.2f, 0);
-                    if (speed <= 6)
+                    break;
+                case "Plus3": //ê°‘ìžê¸° ì´ì•Œ ë°œì‚¬ ì•ˆí•˜ê³ , ì‚¬ë¼ì§
+                    switch (ran)
                     {
-                        speed += 0.5f;
+                        case 1:
+                            power += 3;
+                            break;
+                        case 2:
+                            transform.localScale += defVec * 3;
+                            break;
+                        case 3:
+                            speed += 1.5f;
+                            break;
                     }
                     break;
-                case "Minus2": // Å©±â º¯È­ ¾øÀ½
-                    if (power >= 3)
+
+
+                case "Minus1": //Minus1ì„ ë¨¹ì—ˆì„ ëŒ€, íŒŒì›Œê°€ 3ì´ ë˜ê³ , í¬ê¸°ê°€ ì œì¼ ìž‘ì•„ì§
+                    if (transform.localScale.x > defVec.x * 2 && transform.localScale.y > defVec.y * 2)
                     {
-                        power -= 2;
-                    }
-                    transform.localScale -= new Vector3(0.4f, 0.4f, 0);
-                    if (speed <= 6)
-                    {
-                        speed += 1f;
+                        transform.localScale -= defVec * 1;
+
                     }
                     break;
-                case "Minus3": // ¼Óµµ »¡¶óÁö°í, Å©±â ÀÛ¾ÆÁö´Âµ¥ °©ÀÚ±â ÇÃ·¹ÀÌ¾î ¾ÕµÚ°¡ °Å²Ù·Î ¹Ù²ñ
-                    if (power >= 4)
+                case "Minus2": // í¬ê¸° ë³€í™” ì—†ìŒ
+                    if (transform.localScale.x > defVec.x *3 && transform.localScale.y > defVec.y * 3)
                     {
-                        power -= 3;
+                        transform.localScale -= defVec * 2;
+
                     }
-                    transform.localScale -= new Vector3(0.6f, 0.6f, 0);
-                    if (speed <= 6)
+                    break;
+                case "Minus3": // ì†ë„ ë¹¨ë¼ì§€ê³ , í¬ê¸° ìž‘ì•„ì§€ëŠ”ë° ê°‘ìžê¸° í”Œë ˆì´ì–´ ì•žë’¤ê°€ ê±°ê¾¸ë¡œ ë°”ë€œ
+                    if (transform.localScale.x > defVec.x * 4 && transform.localScale.y > defVec.y * 4)
                     {
-                        speed += 1.5f;
+                        transform.localScale -= defVec * 3;
+
                     }
+
+
                     break;
             }
             collision.gameObject.SetActive(false);

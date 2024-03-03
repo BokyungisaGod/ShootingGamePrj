@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
 
         ran = Random.Range(0, 9);
         int enemyPoint = ran;
-        if (spawnCount == 20)
+        if (spawnCount == 50)
         {
             enemyIndex = 3;
             enemyPoint = 0;
