@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     public int spawnMax;
     public bool spawnEnd;
     // Update is called once per frame
+    public Button[] btn;
 
     void Awake()
     {
@@ -106,6 +107,14 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            btn[0].onClick.Invoke();
+        }
+        else if(Input.GetKeyDown(KeyCode.X))
+        {
+            btn[1].onClick.Invoke();
+        }
         curSpawnDelay += Time.deltaTime;
         if (curSpawnDelay > nextSpawnDelay&&!spawnEnd) 
         {
@@ -120,7 +129,7 @@ public class GameManager : MonoBehaviour
     void SpawnEnemy() 
     {
         int enemyIndex = 0;
-        //switch (spawnList[spawnIndex].type) 
+        //switch (spawnList[spawnIndex].type)
         //{
         //    case "S":
         //        enemyIndex = 0;
@@ -173,7 +182,7 @@ public class GameManager : MonoBehaviour
 
         ran = Random.Range(0, 9);
         int enemyPoint = ran;
-        if (spawnCount == 50)
+        if (spawnCount == 20)
         {
             enemyIndex = 3;
             enemyPoint = 0;
@@ -209,8 +218,17 @@ public class GameManager : MonoBehaviour
             Quaternion rotation = Quaternion.Euler(0, 0, bulletRotationAngle + 90f); // 총알이 나아가는 방향으로 머리가 가도록 90도 회전
             enemy.transform.rotation = rotation;
         }
-        else
-            rigid.velocity = new Vector2(0, enemyLogic.speed*(-1));
+        else 
+        {
+            rigid.velocity = enemyIndex == 5 ? new Vector2(0, enemyLogic.speed * (-1) * 3):new Vector2(0, enemyLogic.speed * (-1))  ;
+            Vector2 dirVec = rigid.velocity;
+            float bulletRotationAngle = Mathf.Atan2(dirVec.y, dirVec.x) * Mathf.Rad2Deg;
+
+            // 총알의 회전 설정
+            Quaternion rotation = Quaternion.Euler(0, 0, bulletRotationAngle + 90f); // 총알이 나아가는 방향으로 머리가 가도록 90도 회전
+            enemy.transform.rotation = rotation;
+        }
+            
 
         spawnCount++;
         if (spawnCount == spawnMax) 
@@ -269,7 +287,7 @@ public class GameManager : MonoBehaviour
     }
     public void GameRetry()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Play");
         //0�ƴϸ� ���̸�
     }
 }

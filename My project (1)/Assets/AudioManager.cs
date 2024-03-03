@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip click;
     public AudioClip attack;
     public AudioClip boom;
+    public AudioClip star;
 
 
     private void Start()

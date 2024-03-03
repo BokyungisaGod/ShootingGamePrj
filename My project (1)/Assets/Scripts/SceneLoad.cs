@@ -17,8 +17,12 @@ public class SceneLoad : MonoBehaviour
         yield return null;
         if(PlayerPrefs.GetInt("Character")==1)
              operation = SceneManager.LoadSceneAsync("Play");
-        else
-            operation = SceneManager.LoadSceneAsync("Play1");
+        else 
+        {
+            Debug.Log("2¿Â");
+            operation = SceneManager.LoadSceneAsync("Play 1");
+        }
+            
         operation.allowSceneActivation = false;
         while (!operation.isDone) 
         {

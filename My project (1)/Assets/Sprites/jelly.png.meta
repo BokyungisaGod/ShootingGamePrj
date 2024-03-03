@@ -106,7 +106,7 @@ TextureImporter:
         width: 284
         height: 374
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -118,10 +118,31 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: jelly_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d79be52bf901efc459d48483c6143506
+      internalID: -844094029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 03f5ee33426cc214f9d7d833a7d8344d
     internalID: 0
     vertices: []
     indices: 
@@ -130,6 +151,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       jelly_0: 6745137483145456397
+      jelly_1: -844094029
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

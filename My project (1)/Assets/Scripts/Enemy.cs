@@ -46,6 +46,8 @@ public class Enemy : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (enemyName == "B")
             anim = GetComponent<Animator>();
+        else if (enemyName == "H")
+            anim = GetComponent<Animator>();
         defaultV = new Vector3(0.05f, 0.05f, 1f);
     }
     void OnEnable()
@@ -74,7 +76,8 @@ public class Enemy : MonoBehaviour
                 break;
             case "H":
                 //cnt = 1;
-                //health = 5;
+                health = 5000;
+                anim.SetTrigger("On");
                 //transform.localScale = defaultV * cnt;
                 break;
         }
@@ -96,34 +99,39 @@ public class Enemy : MonoBehaviour
         switch (patternIndex)
         {
             case 0:
-                FireForward();
+                FireForward(); //빼빼로 총 쏘는
+
                 break;
             case 1:
-                FireDiagonal();
-                //FireRotation();
+                FireArc(); //오른쪽, 왼쪽 푸딩 일자로 쏘기
                 break;
             case 2:
-                FireKnife();
-                //FireAround();
+                FireDiagonal();//피라미드 모양으로 쏘기(플레이어 따라가는)
                 break;
             case 3:
-                FireShot(); //�������� ���� �����°�
+                FireShot(); //빵5개인가 날리는거
                 break;
             case 4:
-                FireRandom();
+                FireRandom();//한줄로 와다다다 날리는거(플레이어 따라가는)
                 break;
             case 5:
-                FireArc();
-                //FireSpiral();
+                FireKnife(); //칼날모양으로쏨
                 break;
             case 6:
-                //FireRotation();
+                FireAround(); //원모양으로 총 쏘는
                 break;
             case 7:
-                //FireArc();
+                FireFree();
                 break;
+             case 8:
+                FireSpiral();
+                break;
+
+
         }
     }
+
+
     void FireForward()
     {
         if (health <= 0) return;
@@ -194,8 +202,8 @@ public class Enemy : MonoBehaviour
     void FireAround()
     {
         if (health <= 0) return;
-        int roundNumA = 50;
-        int roundNumB = 40;
+        int roundNumA = 30;
+        int roundNumB = 35;
         int roundNum = curPatternCount % 2 == 0 ? roundNumA : roundNumB;
 
         for (int index = 0; index < roundNum; index++)
@@ -287,65 +295,33 @@ public class Enemy : MonoBehaviour
         bulletRigidbody.velocity = currentVelocity;
     }
 
-    void FireRotation()
+
+    void FireFree()
     {
         if (health <= 0) return;
-        int bulletCount = 20; // źȯ�� ����
-        float angleStep = 360f / bulletCount; // ���� ����
-        float rotationOffset = 5f;
+        int bulletCount = 8; // 발사할 총알 개수
 
         for (int i = 0; i < bulletCount; i++)
         {
-            GameObject bullet = objectManager.MakeObj("bulletBossA");
+            GameObject bullet = objectManager.MakeObj("bulletBossB");
             bullet.transform.position = transform.position;
             bullet.transform.rotation = Quaternion.identity;
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
 
-            float angle = i * angleStep;
-            Vector2 dir = Quaternion.Euler(0, 0, angle) * Vector2.down;
+            Vector2 dir = Quaternion.Euler(0, 0, Random.Range(0f, 360f)) * Vector2.up; // 무작위 방향으로 총알 발사
 
-            // ¦�� ��° �Ѿ��� �������� ȸ��, Ȧ�� ��° �Ѿ��� ���������� ȸ��
-            float rotationDirection = i % 2 == 0 ? -1 : 1;
-            Quaternion rotation = Quaternion.Euler(0, 0, angle + rotationDirection * rotationOffset);
-            bullet.transform.rotation = rotation;
-
-            // ¦�� ��° �Ѿ��� �������� ������ ����
-            if (i % 2 == 0)
-                dir = Quaternion.Euler(0, 0, angle - rotationOffset) * Vector2.down;
-
-            rigid.AddForce(dir * 3, ForceMode2D.Impulse);
+            rigid.AddForce(dir * 4, ForceMode2D.Impulse); // 발사
         }
 
         curPatternCount++;
         if (curPatternCount < maxPatternCount[patternIndex])
-            Invoke("FireRotation", 0.3f);
+            Invoke("FireFree", 0.7f); // 일정 시간 간격으로 반복해서 발사
         else
-            Invoke("Think", 3);
-
+            Invoke("Think", 3); // 다른 패턴으로 전환
     }
 
     void FireDiagonal()
     {
-        //if (health <= 0) return;
-        //int bulletCount = 10; // źȯ�� ����
-
-        //for (int i = 0; i < bulletCount; i++)
-        //{
-        //    GameObject bullet = objectManager.MakeObj("bulletBossB");
-        //    bullet.transform.position = transform.position;
-        //    bullet.transform.rotation = Quaternion.identity;
-        //    Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
-
-        //    Vector2 dir = (player.transform.position - transform.position).normalized;
-        //    dir.x += i * 0.2f; // x �������� ������ �������� �̵�
-        //    rigid.AddForce(dir * 3, ForceMode2D.Impulse);
-        //}
-
-        //curPatternCount++;
-        //if (curPatternCount < maxPatternCount[patternIndex])
-        //    Invoke("FireDiagonal", 0.5f);
-        //else
-        //    Invoke("Think", 3);
         if (health <= 0) return;
         int bulletCount = 6; // źȯ�� �� ����
         int rightBullets = 3; // ���������� ������ źȯ ����
@@ -482,11 +458,11 @@ public class Enemy : MonoBehaviour
             rigidL.AddForce(dirVecL.normalized * 4, ForceMode2D.Impulse);
 
         }
-        else if (enemyName == "H")
-        {
-            cnt += 1;
-            transform.localScale = defaultV * cnt * 2f;
-        }
+        //else if (enemyName == "H")
+        //{
+        //    cnt += 1;
+        //    transform.localScale = defaultV * cnt * 2f;
+        //}
 
         curShotDelay = 0;
     }
@@ -497,10 +473,10 @@ public class Enemy : MonoBehaviour
     }
     public void OnHit(int dmg)
     {
-        if (!gameObject.activeSelf || cnt == 0 && (enemyName == "V" || enemyName == "H"))
+        if (!gameObject.activeSelf || cnt == 0 && (enemyName == "V" /*|| enemyName == "H"*/))
             return;
 
-        if (enemyName == "V" || enemyName == "H")
+        if (enemyName == "V" /*|| enemyName == "H"*/)
         {
             cnt--;
             transform.localScale = defaultV * cnt;
@@ -522,7 +498,7 @@ public class Enemy : MonoBehaviour
         //}
         spriteRenderer.sprite = sprites[1];
         Invoke("ReturnSprite", 1f);
-        if (health <= 0 || cnt == 0 && (enemyName == "V" || enemyName == "H"))
+        if (health <= 0 || cnt == 0 && (enemyName == "V" /*|| enemyName == "H"*/))
         {
             Player playerLogic = player.GetComponent<Player>();
             playerLogic.score += enemyScore;
@@ -584,6 +560,8 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "BorderBullet" && enemyName != "B")
         {
+            if (collision.gameObject.tag == "BorderBullet" && enemyName == "H")
+                transform.localScale = new Vector3(0.2f, 0.2f, 1f);
             gameObject.SetActive(false);
             transform.rotation = Quaternion.identity;
         }

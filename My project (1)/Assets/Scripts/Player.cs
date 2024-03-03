@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 public class Player : MonoBehaviour
 {
     // Update is called once per frame
-    public float moveSpeed = 5f;
+
 
     public bool isTouchTop;
     public bool isTouchBottom;
@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public int maxPower;
     public float maxShotDelay;
     public float curShotDelay;
+    public float defaultShotDelay;
 
 
     public GameObject bulletObjA;
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
     public bool isHit;
     public bool isBoomTime;
     public bool isRespawnTime;
+    public bool isStarTime;
     public bool[] joyControl;
     public bool isControl;
     public bool isButtonA;
@@ -46,44 +48,54 @@ public class Player : MonoBehaviour
     AudioManager audiomanager;
     Animator anim;
     SpriteRenderer spriteRenderer;
+    
 
     void Awake()
     {
         anim = GetComponent<Animator>();
         spriteRenderer=GetComponent<SpriteRenderer>();
         audiomanager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        defaultShotDelay = maxShotDelay;
     }
     void OnEnable()
     {
         unbeatable();
         Invoke("unbeatable", 3);
     }
-    void unbeatable() 
+    public void unbeatable() 
     {
         isRespawnTime = !isRespawnTime;
 
         if (isRespawnTime) 
         {
-            spriteRenderer.color = new Color(1, 1, 1, 0.5f);
-            for (int index = 0; index < followers.Length; index++)
-            {
-                followers[index].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
-            }
+            anim.SetTrigger("def");
+            //spriteRenderer.color = new Color(1, 1, 1, 0.5f);
+            //for (int index = 0; index < followers.Length; index++)
+            //{
+            //    followers[index].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+            //}
         }
-        else 
-        {
-            spriteRenderer.color = new Color(1, 1, 1, 1);
-            for (int index = 0; index < followers.Length; index++)
-            {
-                followers[index].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
-            }
-        }
+        //else 
+        //{
+        //    spriteRenderer.color = new Color(1, 1, 1, 1);
+        //    for (int index = 0; index < followers.Length; index++)
+        //    {
+        //        followers[index].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+        //    }
+        //}
+    }
+    public void skillStar()
+    {
+        isStarTime = !isStarTime;
     }
     void Update()
     {
         Move();
-        Fire();
-        Boom();
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            Fire();
+        }
+        //Boom();
         Reload();
     }
 
@@ -92,8 +104,8 @@ public class Player : MonoBehaviour
     {
         //if (!Input.GetButton("Fire1"))
         //    return;
-        if (!isButtonA)
-            return;
+        //if (!isButtonA)
+        //    return;
         if (curShotDelay < maxShotDelay)
             return;
         audiomanager.PlaySFX(audiomanager.attack);
@@ -211,7 +223,7 @@ public class Player : MonoBehaviour
             v = 0;
         Vector3 movement = new Vector3(h, v, 0f);
 
-        transform.position += movement * moveSpeed * Time.deltaTime;
+        transform.position += movement * speed * Time.deltaTime;
         //float h = Input.GetAxisRaw("Horizontal");
         //float v = Input.GetAxisRaw("Vertical");
         //if (joyControl[0]) { h = -1;v = 1; }
@@ -253,26 +265,28 @@ public class Player : MonoBehaviour
         isButtonB = true;
         
     }
-    void Boom()
-    {
+    public void Boom()
+    {;
         //if (!Input.GetButton("Fire2"))
         //    return;
-        if (!isButtonB)
-            return;
-        if (isBoomTime)
-            return;
-        if (boom == 0)
-            return;
+        //if (!isButtonB)
+        //    return;
+        //if (isBoomTime)
+        //    return;
+        //if (boom == 0)
+        //    return;
         audiomanager.PlaySFX(audiomanager.boom);
-        boom--;
-        isBoomTime = true;
-        gameManager.UpdateBoomIcon(boom);
+        //boom--;
+        //isBoomTime = true;
+        //gameManager.UpdateBoomIcon(boom);
 
-        boomEffect.SetActive(true);
-        Invoke("offBoomEffect", 3f);
+        //boomEffect.SetActive(true);
+        //Invoke("offBoomEffect", 3f);
         GameObject[] enemiesL = objectManager.GetPool("EnemyL");
         GameObject[] enemiesM = objectManager.GetPool("EnemyM");
         GameObject[] enemiesS = objectManager.GetPool("EnemyS");
+        GameObject[] enemiesV = objectManager.GetPool("EnemyV");
+        GameObject[] enemiesH = objectManager.GetPool("EnemyH");
         for (int index = 0; index < enemiesL.Length; index++)
         {
             if (enemiesL[index].activeSelf) 
@@ -297,8 +311,24 @@ public class Player : MonoBehaviour
                 enemyLogic.OnHit(1000);
             }
         }
+        for (int index = 0; index < enemiesV.Length; index++)
+        {
+            if (enemiesV[index].activeSelf)
+            {
+                enemiesV[index].SetActive(false);
+            }
+        }
+        for (int index = 0; index < enemiesH.Length; index++)
+        {
+            if (enemiesH[index].activeSelf)
+            {
+                enemiesH[index].SetActive(false);
+            }
+        }
         GameObject[] bulletsA = objectManager.GetPool("bulletEnemyA");
         GameObject[] bulletsB = objectManager.GetPool("bulletEnemyB");
+        GameObject[] bulletsC = objectManager.GetPool("bulletBossA");
+        GameObject[] bulletsD = objectManager.GetPool("bulletBossB");
         for (int index = 0; index < bulletsA.Length; index++)
         {
             if (bulletsA[index].activeSelf)
@@ -311,6 +341,20 @@ public class Player : MonoBehaviour
             if (bulletsB[index].activeSelf)
             {
                 bulletsB[index].SetActive(false);
+            }
+        }
+        for (int index = 0; index < bulletsC.Length; index++)
+        {
+            if (bulletsC[index].activeSelf)
+            {
+                bulletsC[index].SetActive(false);
+            }
+        }
+        for (int index = 0; index < bulletsD.Length; index++)
+        {
+            if (bulletsD[index].activeSelf)
+            {
+                bulletsD[index].SetActive(false);
             }
         }
     }
@@ -341,6 +385,11 @@ public class Player : MonoBehaviour
 
             if (isRespawnTime)
                 return;
+            if(isStarTime && collision.gameObject.tag != "Boss")
+            {
+                collision.gameObject.SetActive(false);
+                return;
+            }
             if (isHit)
                 return;
 
@@ -402,10 +451,14 @@ public class Player : MonoBehaviour
                             power++;
                             break;
                         case 2:
-                            transform.localScale += defVec * 1;
+                            if (transform.localScale.x < defVec.x * 8 && transform.localScale.y < defVec.y * 8)
+                            {
+                                transform.localScale += defVec * 1;
+                            }
+                            
                             break;
                         case 3:
-                            speed += 0.5f;
+                            speed += 1f;
                             break;
                     }
                     break;
@@ -416,10 +469,14 @@ public class Player : MonoBehaviour
                             power += 2;
                             break;
                         case 2:
-                            transform.localScale += defVec * 2;
+                            if (transform.localScale.x < defVec.x * 7 && transform.localScale.y < defVec.y * 7)
+                            {
+                                transform.localScale += defVec * 2;
+                            }
+                            
                             break;
                         case 3:
-                            speed += 1f;
+                            speed += 2f;
                             break;
                     }
 
@@ -431,10 +488,14 @@ public class Player : MonoBehaviour
                             power += 3;
                             break;
                         case 2:
-                            transform.localScale += defVec * 3;
+                            if (transform.localScale.x < defVec.x * 6 && transform.localScale.y < defVec.y * 6)
+                            {
+                                transform.localScale += defVec * 3;
+                            }
+                            
                             break;
                         case 3:
-                            speed += 1.5f;
+                            speed += 3f;
                             break;
                     }
                     break;
