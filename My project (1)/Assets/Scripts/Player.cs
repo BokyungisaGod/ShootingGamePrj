@@ -502,27 +502,68 @@ public class Player : MonoBehaviour
 
 
                 case "Minus1": //Minus1을 먹었을 대, 파워가 3이 되고, 크기가 제일 작아짐
-                    if (transform.localScale.x > defVec.x * 2 && transform.localScale.y > defVec.y * 2)
+                    switch (ran)
                     {
-                        transform.localScale -= defVec * 1;
+                        case 1:
+                            if(power>1)
+                                power--;
+                            break;
+                        case 2:
+                            if (transform.localScale.x > defVec.x * 2 && transform.localScale.y > defVec.y * 2)
+                            {
+                                transform.localScale -= defVec * 1;
 
+                            }
+                            break;
+                        case 3:
+                            if (speed > 1)
+                                speed -= 1f;
+                            break;
                     }
+                    break;
+                   
                     break;
                 case "Minus2": // 크기 변화 없음
-                    if (transform.localScale.x > defVec.x *3 && transform.localScale.y > defVec.y * 3)
+                    switch (ran)
                     {
-                        transform.localScale -= defVec * 2;
+                        case 1:
+                            if (power > 2)
+                                power-=2;
+                            break;
+                        case 2:
+                            if (transform.localScale.x > defVec.x * 3 && transform.localScale.y > defVec.y * 3)
+                            {
+                                transform.localScale -= defVec * 2;
 
+                            }
+                            break;
+                        case 3:
+                            if (speed > 2)
+                                speed -= 2f;
+                            break;
                     }
+                    
                     break;
                 case "Minus3": // 속도 빨라지고, 크기 작아지는데 갑자기 플레이어 앞뒤가 거꾸로 바뀜
-                    if (transform.localScale.x > defVec.x * 4 && transform.localScale.y > defVec.y * 4)
+
+                    switch (ran)
                     {
-                        transform.localScale -= defVec * 3;
+                        case 1:
+                            if (power > 3)
+                                power -= 3;
+                            break;
+                        case 2:
+                            if (transform.localScale.x > defVec.x * 4 && transform.localScale.y > defVec.y * 4)
+                            {
+                                transform.localScale -= defVec * 3;
 
+                            }
+                            break;
+                        case 3:
+                            if (speed > 3)
+                                speed -= 3f;
+                            break;
                     }
-
-
                     break;
             }
             collision.gameObject.SetActive(false);
