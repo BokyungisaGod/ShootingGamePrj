@@ -516,7 +516,7 @@ public class Player : MonoBehaviour
                             }
                             break;
                         case 3:
-                            if (speed > 1)
+                            if (speed > 2)
                                 speed -= 1f;
                             break;
                     }
@@ -538,7 +538,7 @@ public class Player : MonoBehaviour
                             }
                             break;
                         case 3:
-                            if (speed > 2)
+                            if (speed > 3)
                                 speed -= 2f;
                             break;
                     }
@@ -560,7 +560,7 @@ public class Player : MonoBehaviour
                             }
                             break;
                         case 3:
-                            if (speed > 3)
+                            if (speed > 4)
                                 speed -= 3f;
                             break;
                     }
