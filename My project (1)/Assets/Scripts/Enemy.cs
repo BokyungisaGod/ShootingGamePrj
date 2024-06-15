@@ -5,6 +5,8 @@ using UnityEngine.Rendering;
 
 public class Enemy : MonoBehaviour
 {
+    public bool IsAlive => health > 0;
+
     public string enemyName;
     public int enemyScore;
     public float speed;
@@ -40,6 +42,9 @@ public class Enemy : MonoBehaviour
     public float maxHealth;
     //public string[] itemName;
 
+    public Vector3 initScale;
+    public Vector3 initEular;
+
     void Awake()
     {
         //itemName = new string[] { "Plus", "Minus" };
@@ -48,7 +53,11 @@ public class Enemy : MonoBehaviour
             anim = GetComponent<Animator>();
         else if (enemyName == "H")
             anim = GetComponent<Animator>();
-        defaultV = new Vector3(0.05f, 0.05f, 1f);
+        //defaultV = new Vector3(0.05f, 0.05f, 1f);
+        defaultV = transform.localScale;
+
+        initScale = transform.localScale;
+        initEular = transform.eulerAngles;
     }
     void OnEnable()
     {
@@ -70,16 +79,28 @@ public class Enemy : MonoBehaviour
                 health = 3;
                 break;
             case "V":
-                cnt = 5;
-                health =5;
-                transform.localScale = defaultV * cnt;
-                break;
+                {
+                    transform.localScale = Vector3.one * 0.25f;
+
+                    //cnt = 5;
+                    health = 5;
+                    //transform.localScale = defaultV * cnt;
+                
+                    break;
+                }
             case "H":
-                //cnt = 1;
-                health = 5000;
-                anim.SetTrigger("On");
-                //transform.localScale = defaultV * cnt;
-                break;
+                {
+                    transform.localScale = initScale;
+
+                    cnt = 1;
+                    health = 5000;
+                    anim.SetTrigger("On");
+                    
+                    //transform.localScale = defaultV * cnt;
+                    
+
+                    break;
+                }
         }
     }
     void Stop()
@@ -473,19 +494,24 @@ public class Enemy : MonoBehaviour
     }
     public void OnHit(int dmg)
     {
-        if (!gameObject.activeSelf || cnt == 0 && (enemyName == "V" /*|| enemyName == "H"*/))
+        if (!gameObject.activeSelf)
             return;
+
+        //if (!gameObject.activeSelf || cnt == 0 && (enemyName == "V" /*|| enemyName == "H"*/))
+        //    return;
 
         if (enemyName == "V" /*|| enemyName == "H"*/)
         {
             cnt--;
-            transform.localScale = defaultV * cnt;
+            transform.localScale = (Vector3.one * 0.25f) - (Vector3.one * 0.05f);
         }
-        else
-        {
+        //else
+        //{
+        //
+        //    health -= dmg;
+        //}
 
-            health -= dmg;
-        }
+        health -= dmg;
 
         if (enemyName == "B")
         {
@@ -558,19 +584,58 @@ public class Enemy : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "BorderBullet" && enemyName != "B")
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet"))
+            return;
+
+        //gameObject.SetActive(false);
+        //transform.rotation = Quaternion.identity;
+
+        if (collision.gameObject.CompareTag("BorderBullet") && enemyName != "B")
         {
-            if (collision.gameObject.tag == "BorderBullet" && enemyName == "H")
-                transform.localScale = new Vector3(0.2f, 0.2f, 1f);
             gameObject.SetActive(false);
             transform.rotation = Quaternion.identity;
         }
-        else if (collision.gameObject.tag == "PlayerBullet")
+        else if (collision.gameObject.CompareTag("PlayerBullet"))
         {
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();
 
-            OnHit(bullet.dmg);
-            collision.gameObject.SetActive(false);
+            int dmg = 0;
+
+            if (enemyName == "H")
+                dmg = 0;
+            else dmg = bullet.dmg;
+
+            OnHit(dmg);
+
+            if (!IsAlive)
+            {
+                //Death
+                gameObject.SetActive(false);
+                transform.localScale = initScale;
+                transform.eulerAngles = initEular;
+                cnt = 1;
+
+                //collision.gameObject.SetActive(false);
+            }
         }
+
+
+        //if (collision.gameObject.tag == "BorderBullet" && enemyName != "B")
+        //{
+        //    if (collision.gameObject.tag == "BorderBullet" && enemyName == "H")
+        //        transform.localScale = new Vector3(0.2f, 0.2f, 1f);
+        //
+        //    gameObject.SetActive(false);
+        //    transform.rotation = Quaternion.identity;
+        //}
+        //else if (collision.gameObject.tag == "PlayerBullet")
+        //{
+        //
+        //    Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+        //
+        //    OnHit(bullet.dmg);
+        //    collision.gameObject.SetActive(false);
+        //
+        //}
     }
 }

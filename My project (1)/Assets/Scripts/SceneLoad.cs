@@ -39,7 +39,14 @@ public class SceneLoad : MonoBehaviour
             {
                 loadText.text = "Press SpaceBar";
             }
+
             if (Input.GetKeyDown(KeyCode.Space)&&progressBar.value>=1f&&operation.progress>=0.9f) 
+            {
+                operation.allowSceneActivation = true;
+            }
+            else if (Input.touchCount > 0 &&
+                progressBar.value >= 1f &&
+                operation.progress >= 0.9f)
             {
                 operation.allowSceneActivation = true;
             }

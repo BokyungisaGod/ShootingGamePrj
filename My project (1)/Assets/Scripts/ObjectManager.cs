@@ -228,11 +228,9 @@ public class ObjectManager : MonoBehaviour
             explosion[index] = Instantiate(explosionPrefab);
             explosion[index].SetActive(false);
         }
-
-
     }
 
-    public GameObject MakeObj(string type)
+    public GameObject MakeObj(string type, bool isActivate = true)
     {
         switch (type)
         {
@@ -312,7 +310,7 @@ public class ObjectManager : MonoBehaviour
         {
             if (!targetPool[index].activeSelf)
             {
-                targetPool[index].SetActive(true);
+                targetPool[index].SetActive(isActivate);
                 return targetPool[index];
             }
         }

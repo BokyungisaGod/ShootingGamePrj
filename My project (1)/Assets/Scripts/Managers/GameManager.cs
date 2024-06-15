@@ -153,44 +153,46 @@ public class GameManager : MonoBehaviour
         //        enemyIndex = 5;
         //        break;
         //}
-        int ran = Random.Range(1, 10);
-        if (ran < 3)
+        int ran = Random.Range(0, 7);  //스폰 포지션
+
+        if (ran < 1)
         {
             enemyIndex = 0;
             nextSpawnDelay = 1f;
         }
-        else if (ran < 6)
+        else if (ran < 2)
         {
             enemyIndex = 1;
             nextSpawnDelay = 2f;
 
         }
-        else if (ran < 8)
+        else if (ran < 4)
         {
             enemyIndex = 2;
             nextSpawnDelay = 2f;
 
         }
-        else if (ran < 9)
+        else if (ran < 6)
         {
             enemyIndex = 4;
             nextSpawnDelay = 3f;
 
         }
-        else if (ran < 10)
+        else if (ran < 8)
         {
             enemyIndex = 5;
             nextSpawnDelay = 3f;
         }
 
-        ran = Random.Range(0, 9);
-        int enemyPoint = ran;
+        int enemyPoint = Random.Range(0, 7);
+
         if (spawnCount == 20)
         {
             enemyIndex = 3;
             enemyPoint = 0;
         }
-        GameObject enemy = objectManager.MakeObj(enemyObjs[enemyIndex]);
+        
+        GameObject enemy = objectManager.MakeObj(enemyObjs[enemyIndex], false);
         enemy.transform.position = spawnPoints[enemyPoint].position;
 
         Rigidbody2D rigid = enemy.GetComponent<Rigidbody2D>();
@@ -198,7 +200,12 @@ public class GameManager : MonoBehaviour
         enemyLogic.player = player;
         enemyLogic.objectManager = objectManager;
         enemyLogic.gameManager = this;
-        if (enemyPoint == 5 || enemyPoint == 6) 
+        enemyLogic.transform.localScale = enemyLogic.initScale;
+        enemyLogic.transform.eulerAngles = enemyLogic.initEular;
+
+        enemy.SetActive(true);
+
+        if (enemyPoint == 3 || enemyPoint == 4) 
         {
             enemy.transform.Rotate(Vector3.back * 90);
             
@@ -210,7 +217,7 @@ public class GameManager : MonoBehaviour
             Quaternion rotation = Quaternion.Euler(0, 0, bulletRotationAngle + 90f); // 총알이 나아가는 방향으로 머리가 가도록 90도 회전
             enemy.transform.rotation = rotation;
         }
-        else if (enemyPoint == 7 || enemyPoint == 8)
+        else if (enemyPoint == 5 || enemyPoint == 6)
         {
             Vector2 dirVec = new Vector2(enemyLogic.speed, -1);
 

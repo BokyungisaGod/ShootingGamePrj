@@ -50,18 +50,26 @@ public class Player : MonoBehaviour
     SpriteRenderer spriteRenderer;
     
 
+
+
     void Awake()
     {
         anim = GetComponent<Animator>();
         spriteRenderer=GetComponent<SpriteRenderer>();
-        audiomanager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+        audiomanager = AudioManager.instance;
+
+        //audiomanager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         defaultShotDelay = maxShotDelay;
     }
+
+
     void OnEnable()
     {
         unbeatable();
         Invoke("unbeatable", 3);
     }
+
     public void unbeatable() 
     {
         isRespawnTime = !isRespawnTime;
@@ -198,21 +206,23 @@ public class Player : MonoBehaviour
 
     }
 
-    //public void JoyPanel(int type) 
-    //{
-    //    for(int index=0; index<9;index++) 
-    //    {
-    //        joyControl[index] = index == type;
-    //    }
-    //}
-    //public void JoyDown()
-    //{
-    //    isControl = true;
-    //}
-    //public void JoyUp()
-    //{
-    //    isControl = false;
-    //}
+    public void JoyPanel(int type) 
+    {
+        for(int index=0; index<9;index++) 
+        {
+            joyControl[index] = index == type;
+        }
+    }
+    public void JoyDown()
+    {
+        isControl = true;
+    }
+    public void JoyUp()
+    {
+        isControl = false;
+    }
+
+
     void Move()
     {
         float h = Input.GetAxisRaw("Horizontal");
@@ -361,7 +371,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Border")
+        if (collision.gameObject.tag == "PlayerBorder")
         {
             switch (collision.gameObject.name)
             {

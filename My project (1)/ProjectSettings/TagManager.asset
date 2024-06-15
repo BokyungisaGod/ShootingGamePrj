@@ -12,6 +12,7 @@ TagManager:
   - Item
   - Audio
   - Boss
+  - PlayerBorder
   layers:
   - Default
   - TransparentFX

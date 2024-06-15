@@ -12,19 +12,18 @@ EditorBuildSettings:
     path: Assets/Scenes/main.unity
     guid: 1971933d875896b4e9b036ab4604e261
   - enabled: 1
-    path: Assets/Scenes/Play.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Select.unity
+    guid: 65ca3ad6e358dff41ace3f307719b924
   - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: c65431319c9d29f4e8b15ca2fcdf14ad
   - enabled: 1
-    path: Assets/Scenes/Select.unity
-    guid: 65ca3ad6e358dff41ace3f307719b924
+    path: Assets/Scenes/Play.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
     path: Assets/Scenes/trash.unity
     guid: 596e633bc08d43444954c4b4ba5e6d8d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Play 1.unity
     guid: 6118064503e25b846ab20467a8d7c4d4
   m_configObjects: {}
-  m_UseUCBPForAssetBundles: 0
