@@ -106,7 +106,7 @@ public class BtnType : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 SceneManager.LoadScene("Loading");
                 break;
             case BTNType.C2:
-                PlayerPrefs.SetInt("Character", 2);
+                PlayerPrefs.SetInt("Character", 1);
                 SceneManager.LoadScene("Loading");
                 break;
 
