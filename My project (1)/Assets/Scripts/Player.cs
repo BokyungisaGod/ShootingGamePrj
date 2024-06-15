@@ -103,6 +103,12 @@ public class Player : MonoBehaviour
         {
             Fire();
         }
+
+        if (Input.touchCount > 0)
+        {
+            Fire();
+        }
+
         //Boom();
         Reload();
     }
@@ -225,41 +231,43 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        if ((h == 1 && isTouchRight) || (h == -1 && isTouchLeft))
-            h = 0;
-        if ((v == 1 && isTouchTop) || (v == -1 && isTouchBottom))
-            v = 0;
-        Vector3 movement = new Vector3(h, v, 0f);
-
-        transform.position += movement * speed * Time.deltaTime;
         //float h = Input.GetAxisRaw("Horizontal");
         //float v = Input.GetAxisRaw("Vertical");
-        //if (joyControl[0]) { h = -1;v = 1; }
-        //if (joyControl[1]) { h = 0; v = 1; }
-        //if (joyControl[2]) { h = 1; v = 1; }
-        //if (joyControl[3]) { h = -1; v = 0; }
-        //if (joyControl[4]) { h = 0; v = 0; }
-        //if (joyControl[5]) { h = 1; v = 0; }
-        //if (joyControl[6]) { h = -1; v = -1; }
-        //if (joyControl[7]) { h = 0; v = -1; }
-        //if (joyControl[8]) { h = 1; v = -1; }
-
-        //if ((h == 1 && isTouchRight) || (h == -1 && isTouchLeft)||!isControl)
+        //if ((h == 1 && isTouchRight) || (h == -1 && isTouchLeft))
         //    h = 0;
-
-        //if ((v == 1 && isTouchTop) || (v == -1 && isTouchBottom) || !isControl)
+        //if ((v == 1 && isTouchTop) || (v == -1 && isTouchBottom))
         //    v = 0;
-        //Vector3 curPos = transform.position;
-        //Vector3 nextPos = new Vector3(h, v, 0) * speed * Time.deltaTime;
+        //Vector3 movement = new Vector3(h, v, 0f);
+        //
+        //transform.position += movement * speed * Time.deltaTime;
 
-        //transform.position = curPos + nextPos;
 
-        //if ((Input.GetButtonDown("Horizontal")) || (Input.GetButtonUp("Vertical")))
-        //{
-        //    anim.SetInteger("Input", (int)h);
-        //}
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+        if (joyControl[0]) { h = -1;v = 1; }
+        if (joyControl[1]) { h = 0; v = 1; }
+        if (joyControl[2]) { h = 1; v = 1; }
+        if (joyControl[3]) { h = -1; v = 0; }
+        if (joyControl[4]) { h = 0; v = 0; }
+        if (joyControl[5]) { h = 1; v = 0; }
+        if (joyControl[6]) { h = -1; v = -1; }
+        if (joyControl[7]) { h = 0; v = -1; }
+        if (joyControl[8]) { h = 1; v = -1; }
+
+        if ((h == 1 && isTouchRight) || (h == -1 && isTouchLeft)||!isControl)
+            h = 0;
+
+        if ((v == 1 && isTouchTop) || (v == -1 && isTouchBottom) || !isControl)
+            v = 0;
+        Vector3 curPos = transform.position;
+        Vector3 nextPos = new Vector3(h, v, 0) * speed * Time.deltaTime;
+
+        transform.position = curPos + nextPos;
+
+        if ((Input.GetButtonDown("Horizontal")) || (Input.GetButtonUp("Vertical")))
+        {
+            anim.SetInteger("Input", (int)h);
+        }
     }
     public void ButtonADown() 
     {
