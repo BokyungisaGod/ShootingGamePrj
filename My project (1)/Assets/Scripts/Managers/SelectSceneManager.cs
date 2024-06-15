@@ -14,8 +14,13 @@ public class SelectSceneManager : MonoBehaviour
     {
         if (inst != null)
         {
+            Debug.Log("!!");
+
             if (inst != this)
+            {
+                Debug.Log("!!");
                 GameObject.Destroy(this);
+            }
         }
         else 
         {
@@ -26,6 +31,8 @@ public class SelectSceneManager : MonoBehaviour
 
     public void Select(Sprite _sprite)
     {
+        Debug.Log(_sprite.name);
+
         targetSprite = _sprite;
     }
 }

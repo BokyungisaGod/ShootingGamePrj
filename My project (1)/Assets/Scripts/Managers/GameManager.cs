@@ -44,7 +44,9 @@ public class GameManager : MonoBehaviour
         stage = PlayerPrefs.GetInt("stage");
         StageStart();
 
-        player.GetComponent<SpriteRenderer>().sprite = SelectSceneManager.Inst.targetSprite;
+        Debug.Log(SelectSceneManager.Inst.targetSprite);
+
+         player.GetComponent<SpriteRenderer>().sprite = SelectSceneManager.Inst.targetSprite;
     }
 
     public void StageStart() 
