@@ -19,7 +19,7 @@ public class SceneLoad : MonoBehaviour
              operation = SceneManager.LoadSceneAsync("Play");
         else 
         {
-            Debug.Log("2Àå");
+            Debug.Log("2ï¿½ï¿½");
             operation = SceneManager.LoadSceneAsync("Play 1");
         }
             
@@ -37,7 +37,7 @@ public class SceneLoad : MonoBehaviour
             }
             if (progressBar.value >=1f) 
             {
-                loadText.text = "Press SpaceBar";
+                loadText.text = "Touch Screen";
             }
 
             if (Input.GetKeyDown(KeyCode.Space)&&progressBar.value>=1f&&operation.progress>=0.9f) 
