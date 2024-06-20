@@ -505,7 +505,7 @@ public class Enemy : MonoBehaviour
             cnt--;
             transform.localScale = (Vector3.one * 0.25f) - (Vector3.one * 0.05f);
         }
-        //else
+        //elseV
         //{
         //
         //    health -= dmg;
@@ -564,8 +564,11 @@ public class Enemy : MonoBehaviour
             if (enemyName == "B")
             {
                 barScale.localScale = defaultScale;
-                Invoke("GameOver", 6);
+                //Invoke("GameOver", 6);
+
                 gameManager.StageEnd();
+
+                gameManager.StageUp();
             }
 
         }

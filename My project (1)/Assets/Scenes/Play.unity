@@ -9630,6 +9630,9 @@ MonoBehaviour:
   - {fileID: 1257469020}
   - {fileID: 460736998}
   - {fileID: 1931498452}
+  h: 0
+  v: 0
+  inputDir: 0
 --- !u!212 &1357523248
 SpriteRenderer:
   m_ObjectHideFlags: 0

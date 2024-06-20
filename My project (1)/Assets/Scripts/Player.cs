@@ -5,7 +5,19 @@ using UnityEngine;
 using Unity.VisualScripting;
 using UnityEngine.UIElements;
 
-
+[Serializable]
+public enum JoyDirection 
+{
+    LeftTop,
+    MiddleTop,
+    RightTop,
+    LeftCenter,
+    MiddleCenter,
+    RightCenter,
+    LeftBottom,
+    MiddleBottom,
+    RightBottom
+}
 
 public class Player : MonoBehaviour
 {
@@ -111,6 +123,8 @@ public class Player : MonoBehaviour
 
         //Boom();
         Reload();
+
+
     }
 
 
@@ -228,6 +242,7 @@ public class Player : MonoBehaviour
         isControl = false;
     }
 
+    public float h, v;
 
     void Move()
     {
@@ -242,8 +257,10 @@ public class Player : MonoBehaviour
         //transform.position += movement * speed * Time.deltaTime;
 
 
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
+        
+
+        h = v = .0f;
+
         if (joyControl[0]) { h = -1;v = 1; }
         if (joyControl[1]) { h = 0; v = 1; }
         if (joyControl[2]) { h = 1; v = 1; }
@@ -254,11 +271,19 @@ public class Player : MonoBehaviour
         if (joyControl[7]) { h = 0; v = -1; }
         if (joyControl[8]) { h = 1; v = -1; }
 
+        Debug.Log($"{isControl}");
+        Debug.Log($"h : {h}, v : {v}");
+
         if ((h == 1 && isTouchRight) || (h == -1 && isTouchLeft)||!isControl)
             h = 0;
 
         if ((v == 1 && isTouchTop) || (v == -1 && isTouchBottom) || !isControl)
             v = 0;
+
+        //For Test
+        h = Input.GetAxisRaw("Horizontal");
+        v = Input.GetAxisRaw("Vertical");
+
         Vector3 curPos = transform.position;
         Vector3 nextPos = new Vector3(h, v, 0) * speed * Time.deltaTime;
 
@@ -269,6 +294,85 @@ public class Player : MonoBehaviour
             anim.SetInteger("Input", (int)h);
         }
     }
+
+    public JoyDirection inputDir;
+
+    public void SetJoyDirection(JoyDirection dir)
+    {
+        inputDir = dir;
+    }
+
+    void JoyMove() 
+    {
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+
+        Vector2 moveVec = Vector2.zero;
+
+        switch (inputDir)
+        {
+            //플레이어가 입력한 조이 패널의 방향을 moveVec로 변환
+            case JoyDirection.LeftTop :
+              moveVec = new Vector2(-1, 1);
+                break;
+            case JoyDirection.MiddleTop : 
+              moveVec = new Vector2(0, 1);
+                break;
+            case JoyDirection.RightTop:
+                moveVec = new Vector2(1, 1);
+                break;
+            case JoyDirection.LeftCenter :
+                moveVec = new Vector2(-1, 0);
+                break;
+            case JoyDirection.MiddleCenter :
+                moveVec = new Vector2(0, 0);
+                break;
+            case JoyDirection.RightCenter :
+                moveVec = new Vector2(1, 0);
+                break;
+            case JoyDirection.LeftBottom :
+                moveVec = new Vector2(-1, -1);
+                break;
+            case JoyDirection.MiddleBottom :
+                moveVec = new Vector2(0, -1);
+                break;
+            case JoyDirection.RightBottom :
+                moveVec = new Vector2(1, -1);
+                break;
+        }
+
+        Vector3 curPos = transform.position;
+        Vector3 nextPos = moveVec * speed * Time.deltaTime;
+
+        transform.position = curPos + nextPos;
+
+
+        //if (joyControl[0]) { h = -1; v = 1; }
+        //if (joyControl[1]) { h = 0; v = 1; }
+        //if (joyControl[2]) { h = 1; v = 1; }
+        //if (joyControl[3]) { h = -1; v = 0; }
+        //if (joyControl[4]) { h = 0; v = 0; }
+        //if (joyControl[5]) { h = 1; v = 0; }
+        //if (joyControl[6]) { h = -1; v = -1; }
+        //if (joyControl[7]) { h = 0; v = -1; }
+        //if (joyControl[8]) { h = 1; v = -1; }
+        //
+        //if ((h == 1 && isTouchRight) || (h == -1 && isTouchLeft) || !isControl)
+        //    h = 0;
+        //
+        //if ((v == 1 && isTouchTop) || (v == -1 && isTouchBottom) || !isControl)
+        //    v = 0;
+        //Vector3 curPos = transform.position;
+        //Vector3 nextPos = new Vector3(h, v, 0) * speed * Time.deltaTime;
+        //
+        //transform.position = curPos + nextPos;
+
+        //if ((Input.GetButtonDown("Horizontal")) || (Input.GetButtonUp("Vertical")))
+        //{
+        //    anim.SetInteger("Input", (int)h);
+        //}
+    }
+
     public void ButtonADown() 
     {
         isButtonA = true;
@@ -518,7 +622,6 @@ public class Player : MonoBehaviour
                     }
                     break;
 
-
                 case "Minus1": //Minus1을 먹었을 대, 파워가 3이 되고, 크기가 제일 작아짐
                     switch (ran)
                     {
@@ -609,7 +712,7 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Border")
+        if (collision.gameObject.tag == "PlayerBorder")
         {
             switch (collision.gameObject.name)
             {
